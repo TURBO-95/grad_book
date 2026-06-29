@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Title Page - IntgraServeAI</title>
+    <style>
+        :root {
+            --primary-blue: #1c3c6a;
+            --accent-gold: #c6a254;
+            --text-dark: #2d3748;
+            --text-gray: #718096;
+            --bg-light: #f8fafc;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            color: var(--text-dark);
+            background-color: #ffffff;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .cover-page {
+            width: 100%;
+            height: 100vh;
+            padding: 40px 60px;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            page-break-after: always;
+            border-left: 12px solid var(--primary-blue);
+        }
+
+        .cover-page::before {
+            content: "";
+            position: absolute;
+            left: -12px;
+            top: 0;
+            bottom: 0;
+            width: 12px;
+            background: linear-gradient(to bottom, #1c3c6a 0%, #4a5568 50%, #c6a254 100%);
+        }
+
+        .header-section {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .uni-arabic {
+            font-size: 16pt;
+            font-weight: bold;
+            color: var(--primary-blue);
+            margin-bottom: 5px;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .uni-english {
+            font-size: 14pt;
+            font-weight: bold;
+            color: var(--primary-blue);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .dept-english {
+            font-size: 11pt;
+            color: var(--text-gray);
+            margin-top: 5px;
+            letter-spacing: 0.5px;
+        }
+
+        .badge-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .badge {
+            border: 1px solid var(--accent-gold);
+            color: var(--accent-gold);
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 10pt;
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .title-section {
+            text-align: center;
+            margin-top: 40px;
+            margin-bottom: 50px;
+        }
+
+        .project-title {
+            font-size: 56pt;
+            font-weight: 900;
+            color: var(--primary-blue);
+            letter-spacing: -1px;
+            margin-bottom: 15px;
+        }
+
+        .project-title span {
+            color: var(--accent-gold);
+        }
+
+        .project-subtitle {
+            font-size: 14pt;
+            color: var(--text-gray);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.5;
+        }
+
+        .diamond-divider {
+            text-align: center;
+            color: var(--accent-gold);
+            font-size: 14pt;
+            margin: 30px 0;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 20px;
+            flex-grow: 1;
+        }
+
+        .card {
+            background-color: var(--bg-light);
+            border-radius: 12px;
+            padding: 30px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .card-title {
+            font-size: 11pt;
+            color: var(--accent-gold);
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 10px;
+        }
+
+        .team-list {
+            list-style: none;
+        }
+
+        .team-list li {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 12px;
+            font-size: 11pt;
+        }
+
+        .team-list li .name {
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .team-list li .role {
+            color: var(--text-gray);
+            font-size: 10pt;
+        }
+
+        .supervisor-list {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+
+        .supervisor-list li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .supervisor-icon {
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary-blue);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 15px;
+            color: white;
+            font-weight: bold;
+        }
+
+        .supervisor-info .name {
+            font-weight: bold;
+            font-size: 12pt;
+            color: var(--text-dark);
+        }
+
+        .supervisor-info .title {
+            font-size: 10pt;
+            color: var(--text-gray);
+        }
+
+        .submission-text {
+            font-size: 10pt;
+            color: var(--text-gray);
+            line-height: 1.6;
+            border-top: 1px dashed #cbd5e0;
+            padding-top: 20px;
+        }
+
+        .footer-section {
+            margin-top: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            padding-top: 20px;
+        }
+
+        .academic-year {
+            font-size: 10pt;
+            color: var(--text-gray);
+        }
+
+        .academic-year strong {
+            display: block;
+            font-size: 16pt;
+            color: var(--primary-blue);
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="cover-page">
+        <div class="header-section">
+            <div class="uni-arabic">جامعة المنصورة - كلية الحاسبات والمعلومات</div>
+            <div class="uni-english">MANSOURA UNIVERSITY — FACULTY OF COMPUTERS AND INFORMATION</div>
+            <div class="dept-english">Computer Science Department</div>
+        </div>
+
+        <div class="badge-container">
+            <div class="badge">Graduation Project Book</div>
+        </div>
+
+        <div class="title-section">
+            <div class="project-title">Intgra<span>Serve</span>AI</div>
+            <div class="project-subtitle">
+                A Next-Generation, LLM-Powered Action Engine for Intelligent<br>Enterprise Customer Assistance.
+            </div>
+        </div>
+
+        <div class="diamond-divider">◆</div>
+
+        <div class="info-grid">
+            <div class="card">
+                <div class="card-title">Prepared By · The Team</div>
+                <ul class="team-list">
+                    <li><span class="name">Mahmoud Tariq Al-Metwally</span> <span class="role">Team Lead</span></li>
+                    <li><span class="name">Youssef Hany</span> <span class="role">Back-End Lead</span></li>
+                    <li><span class="name">Mahmoud Abd El-Raouf</span> <span class="role">Back-End</span></li>
+                    <li><span class="name">Youssef Tariq</span> <span class="role">Back-End</span></li>
+                    <li><span class="name">Mahmoud Walid</span> <span class="role">Front-End Lead</span></li>
+                    <li><span class="name">Ahmed El-Gaml</span> <span class="role">Front-End UI</span></li>
+                    <li><span class="name">Youssef El-Sharkawy</span> <span class="role">Front-End</span></li>
+                    <li><span class="name">Youssef Shaheen</span> <span class="role">AI Engine</span></li>
+                    <li><span class="name">Fatma Hegazy</span> <span class="role">AI Engine</span></li>
+                    <li><span class="name">Mahmoud El-Kafrawy</span> <span class="role">AI Engine</span></li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <div class="card-title">Supervised By</div>
+                <ul class="supervisor-list">
+                    <li>
+                        <div class="supervisor-icon">AT</div>
+                        <div class="supervisor-info">
+                            <div class="name">Prof. Ahmed Tolba</div>
+                            <div class="title">Supervising Professor</div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="supervisor-icon">MA</div>
+                        <div class="supervisor-info">
+                            <div class="name">Eng. Mahmoud Abas</div>
+                            <div class="title">Teaching Assistant</div>
+                        </div>
+                    </li>
+                </ul>
+                <div class="submission-text">
+                    A project submitted in partial fulfilment of the requirements for the degree of <strong>Bachelor of Science in Computer Science</strong>.
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-section">
+            <div class="academic-year">
+                Academic Year
+                <strong>2025 — 2026</strong>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
