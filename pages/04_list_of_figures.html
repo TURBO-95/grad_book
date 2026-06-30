@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -7,15 +8,19 @@
     <style>
         /* ── Design Tokens ────────────────────────────────────── */
         :root {
-            --primary:   #1a365d;
-            --gold:      #c6a254;
+            --primary: #1a365d;
+            --gold: #c6a254;
             --text-dark: #2d3748;
-            --text-muted:#718096;
-            --surface:   #f8fafc;
-            --border:    #e2e8f0;
+            --text-muted: #718096;
+            --surface: #f8fafc;
+            --border: #e2e8f0;
         }
 
-        * { box-sizing: border-box; margin: 0; padding: 0; }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
         body {
             /* Matched the font stack from the Title Page */
@@ -36,13 +41,6 @@
         }
 
         /* ── Page Header (from component) ────────────────────── */
-        /* Ensuring custom tag renders correctly */
-        page-header {
-            display: block;
-            text-align: center;
-            margin-bottom: 36px;
-            flex-shrink: 0;
-        }
 
         .page-header {
             text-align: center;
@@ -53,7 +51,8 @@
             font-size: 26pt;
             color: var(--primary);
             margin-bottom: 12px;
-            font-weight: 900; /* Matched title page weight */
+            font-weight: 900;
+            /* Matched title page weight */
             text-transform: uppercase;
             letter-spacing: 1px;
         }
@@ -85,11 +84,8 @@
             border-bottom: 1px solid var(--border);
         }
 
-        .list-group-label:first-child { margin-top: 0; }
-
-        /* Ensuring custom tag behaves as a block wrapper */
-        list-entry {
-            display: block;
+        .list-group-label:first-child {
+            margin-top: 0;
         }
 
         /* List entries (from component) */
@@ -102,7 +98,8 @@
         }
 
         .list-entry-label {
-            color: var(--text-dark); /* Properly applying text-dark */
+            color: var(--text-dark);
+            /* Properly applying text-dark */
             font-weight: 500;
             flex-shrink: 0;
         }
@@ -110,7 +107,8 @@
         .list-entry-dots {
             flex: 1;
             border-bottom: 1.5px dotted var(--text-muted);
-            opacity: 0.5; /* Makes the dots visually softer */
+            opacity: 0.5;
+            /* Makes the dots visually softer */
             margin: 0 10px 4px 10px;
             min-width: 20px;
         }
@@ -119,10 +117,12 @@
             flex-shrink: 0;
             font-size: 11pt;
             font-weight: bold;
-            color: var(--primary); /* Ties into the theme colors beautifully */
+            color: var(--primary);
+            /* Ties into the theme colors beautifully */
         }
     </style>
 </head>
+
 <body>
 
     <div class="page-body pdf-flex-page">
@@ -132,38 +132,41 @@
         <div class="list-content">
 
             <div class="list-group-label">Chapter 1 — Introduction</div>
-            <list-entry label="Figure 1.1 — High-level system boundary diagram of IntgraServeAI"           page="5"></list-entry>
-            <list-entry label="Figure 1.2 — Problem statement: gap between passive retrieval and action"   page="5"></list-entry>
+            <list-entry label="Figure 1.1 — High-level system boundary diagram of IntgraServeAI" page="5"></list-entry>
+            <list-entry label="Figure 1.2 — Problem statement: gap between passive retrieval and action"
+                page="5"></list-entry>
 
             <div class="list-group-label">Chapter 2 — Literature Review</div>
-            <list-entry label="Figure 2.1 — Taxonomy of conversational AI systems"                         page="11"></list-entry>
-            <list-entry label="Figure 2.2 — Standard RAG pipeline architecture"                            page="13"></list-entry>
-            <list-entry label="Figure 2.3 — LLM function-calling flow (OpenAI tool format)"                page="16"></list-entry>
+            <list-entry label="Figure 2.1 — Taxonomy of conversational AI systems" page="11"></list-entry>
+            <list-entry label="Figure 2.2 — Standard RAG pipeline architecture" page="13"></list-entry>
+            <list-entry label="Figure 2.3 — LLM function-calling flow (OpenAI tool format)" page="16"></list-entry>
 
             <div class="list-group-label">Chapter 3 — System Analysis and Design</div>
-            <list-entry label="Figure 3.1 — C4 Context diagram of IntgraServeAI"                           page="24"></list-entry>
-            <list-entry label="Figure 3.2 — C4 Container diagram showing service boundaries"               page="25"></list-entry>
-            <list-entry label="Figure 3.3 — C4 Component diagram of the Action Engine"                     page="26"></list-entry>
-            <list-entry label="Figure 3.4 — Use case diagram: customer-facing interactions"                page="27"></list-entry>
-            <list-entry label="Figure 3.5 — Use case diagram: admin and integration actors"                page="28"></list-entry>
-            <list-entry label="Figure 3.6 — Sequence diagram: RAG-augmented query flow"                    page="31"></list-entry>
-            <list-entry label="Figure 3.7 — Sequence diagram: Action Engine tool discovery"                page="32"></list-entry>
+            <list-entry label="Figure 3.1 — C4 Context diagram of IntgraServeAI" page="24"></list-entry>
+            <list-entry label="Figure 3.2 — C4 Container diagram showing service boundaries" page="25"></list-entry>
+            <list-entry label="Figure 3.3 — C4 Component diagram of the Action Engine" page="26"></list-entry>
+            <list-entry label="Figure 3.4 — Use case diagram: customer-facing interactions" page="27"></list-entry>
+            <list-entry label="Figure 3.5 — Use case diagram: admin and integration actors" page="28"></list-entry>
+            <list-entry label="Figure 3.6 — Sequence diagram: RAG-augmented query flow" page="31"></list-entry>
+            <list-entry label="Figure 3.7 — Sequence diagram: Action Engine tool discovery" page="32"></list-entry>
 
             <div class="list-group-label">Chapter 4 — Implementation</div>
-            <list-entry label="Figure 4.1 — Knowledge ingestion pipeline stages"                           page="37"></list-entry>
-            <list-entry label="Figure 4.2 — Vector embedding and retrieval workflow"                       page="39"></list-entry>
-            <list-entry label="Figure 4.3 — Action Engine: OpenAPI discovery and tool registration"        page="41"></list-entry>
-            <list-entry label="Figure 4.4 — Multi-step agentic reasoning loop"                             page="45"></list-entry>
-            <list-entry label="Figure 4.5 — API request lifecycle in the orchestration layer"              page="46"></list-entry>
+            <list-entry label="Figure 4.1 — Knowledge ingestion pipeline stages" page="37"></list-entry>
+            <list-entry label="Figure 4.2 — Vector embedding and retrieval workflow" page="39"></list-entry>
+            <list-entry label="Figure 4.3 — Action Engine: OpenAPI discovery and tool registration"
+                page="41"></list-entry>
+            <list-entry label="Figure 4.4 — Multi-step agentic reasoning loop" page="45"></list-entry>
+            <list-entry label="Figure 4.5 — API request lifecycle in the orchestration layer" page="46"></list-entry>
 
             <div class="list-group-label">Chapter 5 — Testing and Evaluation</div>
-            <list-entry label="Figure 5.1 — Test coverage breakdown by service module"                     page="52"></list-entry>
-            <list-entry label="Figure 5.2 — Latency distribution across 500 simulated queries"             page="55"></list-entry>
-            <list-entry label="Figure 5.3 — Retrieval precision–recall curve"                              page="56"></list-entry>
+            <list-entry label="Figure 5.1 — Test coverage breakdown by service module" page="52"></list-entry>
+            <list-entry label="Figure 5.2 — Latency distribution across 500 simulated queries" page="55"></list-entry>
+            <list-entry label="Figure 5.3 — Retrieval precision–recall curve" page="56"></list-entry>
 
         </div>
 
     </div>
 
 </body>
+
 </html>
