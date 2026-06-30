@@ -95,11 +95,20 @@
             margin-top: auto; /* Pushes image to the bottom of the content area */
             margin-bottom: 10px;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             flex: 1; /* Allows it to take up remaining space */
             min-height: 0; /* Critical for flex child to shrink properly */
             padding-top: 10px;
+        }
+
+        .figure-block p {
+            font-weight: 400;
+            font-size: 8pt;
+            color: var(--text-dark);
+            text-align: center;
+            margin-top: 8px;
         }
 
         .figure-img {
@@ -150,7 +159,7 @@
             </text-section>
 
             <!-- Image Block (Will auto-scale to fill remaining page space) -->
-            <figure-block src="../../assets/system_boundary_diagram.png" alt="System Boundary Diagram"></figure-block>
+            <figure-block src="../../assets/system_boundary_diagram.png" alt="System Boundary Diagram" label="Fig. 1.2 System Boundary Diagram"></figure-block>
 
         </div>
 
