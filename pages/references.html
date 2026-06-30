@@ -1,7 +1,162 @@
 <!DOCTYPE html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>References</title>
-<style>:root{--primary-color:#1a365d;--text-color:#333333;}body{font-family:"Times New Roman", Times, serif;color:var(--text-color);max-width:800px;margin:0 auto;padding:40px;}h1{font-family:'Helvetica Neue', Arial, sans-serif;color:var(--primary-color);}ol{margin-left:24px;}</style>
-</head><body>
-<h1>References</h1>
-<ol><!-- Paste IEEE formatted references here --></ol>
-</body></html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>References - IntgraServeAI</title>
+    <style>
+        /* ── Design Tokens ────────────────────────────────────── */
+        :root {
+            --primary:   #1a365d;
+            --gold:      #c6a254;
+            --text-dark: #2d3748;
+            --text-muted:#718096;
+            --surface:   #f8fafc;
+            --border:    #e2e8f0;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            color: var(--text-dark);
+            background: #ffffff;
+        }
+
+        /* ── PDF Page Container ───────────────────────────────── */
+        .page-body {
+            width: 100%;
+            height: 100vh;
+            padding: 42px 52px;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            page-break-after: always;
+        }
+
+        /* ── Custom Element Display Enablers ──────────────────── */
+        page-header, reference-item, roman-footer {
+            display: block;
+        }
+
+        /* ── Page Header (Reused Component Styles) ────────────── */
+        .page-header {
+            text-align: center;
+            margin-bottom: 36px;
+            flex-shrink: 0;
+        }
+
+        .page-header-title {
+            font-size: 26pt;
+            color: var(--primary);
+            margin-bottom: 12px;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .page-header-divider {
+            height: 3px;
+            width: 70px;
+            background: var(--gold);
+            margin: 0 auto;
+            border-radius: 2px;
+        }
+
+        /* ── References Layout ────────────────────────────────── */
+        .references-list {
+            flex: 1;
+            overflow: hidden;
+            padding-top: 10px;
+        }
+
+        /* Reference Item Component Styles */
+        .reference-item {
+            display: flex;
+            align-items: baseline;
+            margin-bottom: 20px;
+            font-size: 11pt;
+            line-height: 1.6;
+        }
+
+        .ref-number {
+            color: var(--primary);
+            font-weight: bold;
+            flex-shrink: 0;
+            width: 38px; /* Standardized width to cleanly indent the text block */
+        }
+
+        .ref-content {
+            color: var(--text-dark);
+            flex: 1;
+            text-align: justify; /* Common in academic papers */
+        }
+
+        /* Helper utility classes intended to be used inside the {content} injection */
+        .ref-title {
+            font-style: italic;
+            color: var(--text-dark);
+        }
+        
+        .ref-link {
+            color: var(--primary);
+            text-decoration: none;
+            border-bottom: 1px dotted var(--primary);
+            word-break: break-all;
+        }
+
+        .ref-year {
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+
+        /* ── Footer ───────────────────────────────────────────── */
+        .roman-footer {
+            margin-top: auto;
+            text-align: center;
+            padding-top: 24px;
+            flex-shrink: 0;
+        }
+
+        .roman-page {
+            font-size: 12pt;
+            font-weight: bold;
+            color: var(--text-muted);
+            letter-spacing: 1px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="page-body pdf-flex-page">
+
+        <page-header title="References"></page-header>
+
+        <div class="references-list">
+            
+            <reference-item 
+                num="1" 
+                content="Brown, T., Mann, B., Ryder, N., Subbiah, M., et al. <span class='ref-year'>(2020)</span>. <span class='ref-title'>Language Models are Few-Shot Learners</span>. Advances in Neural Information Processing Systems, 33, 1877-1901.">
+            </reference-item>
+
+            <reference-item 
+                num="2" 
+                content="Lewis, P., Perez, E., Piktus, A., Petroni, F., et al. <span class='ref-year'>(2020)</span>. <span class='ref-title'>Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks</span>. arXiv preprint. <a href='#' class='ref-link'>arXiv:2005.11401</a>.">
+            </reference-item>
+
+            <reference-item 
+                num="3" 
+                content="OpenAI. <span class='ref-year'>(2023)</span>. <span class='ref-title'>Function Calling and Tool Use in GPT-4 API</span>. OpenAI Documentation. Available at: <a href='#' class='ref-link'>https://platform.openai.com/docs/guides/function-calling</a>.">
+            </reference-item>
+
+            <reference-item 
+                num="4" 
+                content="Richards, M., & Ford, N. <span class='ref-year'>(2020)</span>. <span class='ref-title'>Fundamentals of Software Architecture: An Engineering Approach</span>. O'Reilly Media, Inc.">
+            </reference-item>
+
+        </div>
+
+    </div>
+
+</body>
+</html>
