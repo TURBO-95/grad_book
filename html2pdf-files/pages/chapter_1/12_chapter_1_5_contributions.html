@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Chapter 1.5 — Contributions</title>
+    <style>
+        /* ── Design Tokens ────────────────────────────────────── */
+        :root {
+            --primary:   #1a365d;
+            --gold:      #c6a254;
+            --text-dark: #2d3748;
+            --text-muted:#718096;
+            --surface:   #f8fafc;
+            --border:    #e2e8f0;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            color: var(--text-dark);
+            background: #ffffff;
+            font-size: 10.5pt;
+            line-height: 1.6;
+        }
+
+        /* ── PDF Page Container ───────────────────────────────── */
+        .page-body {
+            width: 100%;
+            height: 100vh;
+            padding: 42px 52px;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            page-break-after: always;
+        }
+
+        /* ── Custom Element Display Enablers ──────────────────── */
+        page-sub-header, bullet-item, page-footer {
+            display: block;
+        }
+
+        /* ── Page Layout & Flow ───────────────────────────────── */
+        .content-wrapper {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .text-paragraph {
+            text-align: justify;
+            color: var(--text-dark);
+            margin-bottom: 20px;
+            text-indent: 30px; /* Standard academic paragraph indent */
+        }
+
+        /* ── Sub Header Component ─────────────────────────────── */
+        .page-sub-header {
+            margin-bottom: 24px;
+            flex-shrink: 0;
+        }
+
+        .sub-header-title {
+            font-size: 20pt;
+            color: var(--primary);
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+        }
+
+        .sub-header-divider {
+            height: 2px;
+            width: 50px;
+            background: var(--gold);
+            border-radius: 2px;
+        }
+
+        /* ── Bullet Item Component (Reused from Ch 1.3) ───────── */
+        .contributions-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-top: 8px;
+            padding-right: 10px;
+        }
+
+        .bullet-item {
+            display: flex;
+            align-items: baseline;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            padding: 14px 18px;
+            border-radius: 8px;
+        }
+
+        .bullet-icon {
+            color: var(--gold);
+            font-size: 11pt;
+            margin-right: 14px;
+            flex-shrink: 0;
+        }
+
+        .bullet-content {
+            text-align: justify;
+            color: var(--text-dark);
+        }
+
+        .bullet-title {
+            color: var(--primary);
+            font-weight: 700;
+            margin-right: 4px;
+        }
+
+        /* ── Page Footer Component ────────────────────────────── */
+        .page-footer {
+            margin-top: auto;
+            text-align: center;
+            padding-top: 18px;
+            flex-shrink: 0;
+        }
+
+        .page-number {
+            font-size: 11pt;
+            font-weight: bold;
+            color: var(--text-muted);
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="page-body pdf-flex-page">
+
+        <!-- Header -->
+        <page-sub-header title="1.5 Contributions"></page-sub-header>
+
+        <!-- Main Content Area -->
+        <div class="content-wrapper">
+            
+            <p class="text-paragraph">
+                While IntgraServeAI is fundamentally an academic graduation project, its architecture is engineered with a viable commercialization strategy and profound industry applicability in mind. The primary contribution of this study is the proposal and implementation of a universally integratable AI engine that transforms digital user engagement. Specifically, this study contributes to the field of software engineering and applied AI in the following ways:
+            </p>
+
+            <div class="contributions-list">
+                
+                <bullet-item 
+                    title="Drastic Reduction in Integration Overhead:" 
+                    content="By demonstrating a dynamic, protocol-agnostic Action Engine, this study provides a blueprint for eliminating the need for costly and time-consuming bespoke developer code typically required for each new tool integration.">
+                </bullet-item>
+
+                <bullet-item 
+                    title="Unlocking Proprietary Data Value:" 
+                    content="The research showcases a secure methodology for seamlessly connecting siloed enterprise knowledge with operational enterprise actions, ensuring all AI-driven interactions are safe, accurate, and value-additive.">
+                </bullet-item>
+
+                <bullet-item 
+                    title="Advancing Autonomous Workflows:" 
+                    content="This project proves the viability of using LLMs not just as conversational interfaces, but as orchestration engines capable of executing complex, multi-step workflows that traditionally required human intervention, thereby significantly increasing operational efficiency.">
+                </bullet-item>
+
+            </div>
+
+        </div>
+
+        <!-- Footer -->
+        <page-footer page="5"></page-footer>
+
+    </div>
+
+</body>
+</html>

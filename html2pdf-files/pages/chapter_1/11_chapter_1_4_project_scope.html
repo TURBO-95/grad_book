@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Chapter 1.4 — Project Scope</title>
+    <style>
+        /* ── Design Tokens ────────────────────────────────────── */
+        :root {
+            --primary:   #1a365d;
+            --gold:      #c6a254;
+            --text-dark: #2d3748;
+            --text-muted:#718096;
+            --surface:   #f8fafc;
+            --border:    #e2e8f0;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            color: var(--text-dark);
+            background: #ffffff;
+            font-size: 10.5pt;
+            line-height: 1.6;
+        }
+
+        /* ── PDF Page Container ───────────────────────────────── */
+        .page-body {
+            width: 100%;
+            height: 100vh;
+            padding: 42px 52px;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            page-break-after: always;
+        }
+
+        /* ── Custom Element Display Enablers ──────────────────── */
+        page-sub-header, text-section, figure-block, page-footer {
+            display: block;
+        }
+
+        /* ── Page Layout & Flow ───────────────────────────────── */
+        .content-wrapper {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 18px; /* Consistent spacing between paragraphs and sections */
+            overflow: hidden; /* Prevents spillover */
+        }
+
+        .text-paragraph {
+            text-align: justify;
+            color: var(--text-dark);
+            text-indent: 30px; /* Standard academic paragraph indent */
+        }
+
+        /* ── Sub Header Component ─────────────────────────────── */
+        .page-sub-header {
+            margin-bottom: 24px;
+            flex-shrink: 0;
+        }
+
+        .sub-header-title {
+            font-size: 20pt;
+            color: var(--primary);
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+        }
+
+        .sub-header-divider {
+            height: 2px;
+            width: 50px;
+            background: var(--gold);
+            border-radius: 2px;
+        }
+
+        /* ── Text Section Component ───────────────────────────── */
+        .text-section-title {
+            font-size: 11pt;
+            color: var(--primary);
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+
+        .text-section-content {
+            text-align: justify;
+            color: var(--text-dark);
+        }
+
+        /* ── Figure Block Component ───────────────────────────── */
+        .figure-block {
+            margin-top: auto; /* Pushes image to the bottom of the content area */
+            margin-bottom: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            flex: 1; /* Allows it to take up remaining space */
+            min-height: 0; /* Critical for flex child to shrink properly */
+            padding-top: 10px;
+        }
+
+        .figure-block p {
+            font-weight: 400;
+            font-size: 8pt;
+            color: var(--text-dark);
+            text-align: center;
+            margin-top: 8px;
+        }
+
+        .figure-img {
+            max-width: 100%;
+            max-height: 100%; /* Scales down perfectly to fit remaining space */
+            object-fit: contain;
+            border-radius: 6px;
+        }
+
+        /* ── Page Footer Component ────────────────────────────── */
+        .page-footer {
+            margin-top: auto;
+            text-align: center;
+            padding-top: 18px;
+            flex-shrink: 0;
+        }
+
+        .page-number {
+            font-size: 11pt;
+            font-weight: bold;
+            color: var(--text-muted);
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="page-body pdf-flex-page">
+
+        <!-- Header -->
+        <page-sub-header title="1.4 Project Scope"></page-sub-header>
+
+        <!-- Main Content Area -->
+        <div class="content-wrapper">
+            
+            <p class="text-paragraph">
+                The scope of the IntgraServeAI project defines the explicit boundaries of the deliverables, outlining the specific features and functionalities that will be developed, as well as those deliberately excluded to maintain architectural focus and academic rigor.
+            </p>
+
+            <text-section 
+                title="In-Scope Core Deliverables" 
+                content="The project encompasses the design, development, and testing of the core Python-based IntgraServeAI backend. This includes the realization of the RAG pipeline for document ingestion and semantic search, alongside the dynamic Action Engine capable of translating abstract LLM intents into executable API requests (e.g., REST, gRPC, GraphQL). The scope also covers a functional UI dashboard to demonstrate real-time capabilities, comprehensive system architecture documentation, API reference guides, and containerized deployment blueprints utilizing Docker.">
+            </text-section>
+
+            <text-section 
+                title="Out-of-Scope Boundaries" 
+                content="The project will not deliver a commercially hosted, multi-tenant SaaS application. Advanced enterprise features such as global compliance certifications (e.g., SOC2, GDPR auditing), high-availability production load balancing, and integrated billing modules fall outside this academic scope. Furthermore, while the system automates complex tasks, it is not designed to permanently replace human agents; thus, complex human-in-the-loop escalation interfaces are excluded from the primary prototype.">
+            </text-section>
+
+            <!-- Image Block (Will auto-scale to fill remaining page space) -->
+            <figure-block src="../../assets/system_boundary_diagram.png" alt="System Boundary Diagram" label="Fig. 1.2 System Boundary Diagram"></figure-block>
+
+        </div>
+
+        <!-- Footer -->
+        <page-footer page="4"></page-footer>
+
+    </div>
+
+</body>
+</html>

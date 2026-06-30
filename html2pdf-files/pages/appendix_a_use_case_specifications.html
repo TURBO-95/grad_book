@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>List of Figures</title>
+    <style>
+        /* ── Design Tokens ────────────────────────────────────── */
+        :root {
+            --primary:   #1a365d;
+            --gold:      #c6a254;
+            --text-dark: #2d3748;
+            --text-muted:#718096;
+            --surface:   #f8fafc;
+            --border:    #e2e8f0;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            /* Matched the font stack from the Title Page */
+            font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            color: var(--text-dark);
+            background: #ffffff;
+        }
+
+        /* ── PDF Page Container ───────────────────────────────── */
+        .page-body {
+            width: 100%;
+            height: 100vh;
+            padding: 42px 52px;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            page-break-after: always;
+        }
+
+        /* ── Page Header (from component) ────────────────────── */
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 36px;
+        }
+
+        .page-header-title {
+            font-size: 26pt;
+            color: var(--primary);
+            margin-bottom: 12px;
+            font-weight: 900; /* Matched title page weight */
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .page-header-subtitle {
+            font-size: 20pt;
+            color: var(--primary);
+            font-weight: 600;
+            text-transform: capitalize;
+        }
+
+        .page-header-divider {
+            height: 3px;
+            width: 70px;
+            background: var(--gold);
+            margin: 0 auto;
+            border-radius: 2px;
+        }
+
+        /* ── List Content ─────────────────────────────────────── */
+        .list-content {
+            flex: 1;
+            overflow: hidden;
+        }
+
+        /* Chapter group label */
+        .list-group-label {
+            font-size: 9pt;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--gold);
+            margin-bottom: 12px;
+            margin-top: 24px;
+            padding-bottom: 6px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .list-group-label:first-child { margin-top: 0; }
+
+        /* List entries (from component) */
+        .list-entry {
+            color: var(--text-dark);
+            display: flex;
+            align-items: baseline;
+            padding: 7px 0;
+            font-size: 11pt;
+        }
+
+        .list-entry-label {
+            color: var(--text-dark); /* Properly applying text-dark */
+            font-weight: 500;
+            flex-shrink: 0;
+        }
+
+        .list-entry-dots {
+            flex: 1;
+            border-bottom: 1.5px dotted var(--text-muted);
+            opacity: 0.5; /* Makes the dots visually softer */
+            margin: 0 10px 4px 10px;
+            min-width: 20px;
+        }
+
+        .list-entry-page {
+            flex-shrink: 0;
+            font-size: 11pt;
+            font-weight: bold;
+            color: var(--primary); /* Ties into the theme colors beautifully */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="page-body pdf-flex-page">
+
+        <page-header title="Appendix A"></page-header>
+        <div class="list-content">
+
+            <div class="list-group-label">Use Case Specifications</div>
+            <list-entry label="Use Case 1.1 — Customer interaction"           page="5"></list-entry>
+            <list-entry label="Use Case 1.2 — Problem statement: gap between passive retrieval and action"   page="5"></list-entry>
+
+        </div>
+
+    </div>
+
+</body>
+</html>
