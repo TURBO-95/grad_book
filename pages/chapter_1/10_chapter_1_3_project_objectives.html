@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -7,15 +8,19 @@
     <style>
         /* ── Design Tokens ────────────────────────────────────── */
         :root {
-            --primary:   #1a365d;
-            --gold:      #c6a254;
+            --primary: #1a365d;
+            --gold: #c6a254;
             --text-dark: #2d3748;
-            --text-muted:#718096;
-            --surface:   #f8fafc;
-            --border:    #e2e8f0;
+            --text-muted: #718096;
+            --surface: #f8fafc;
+            --border: #e2e8f0;
         }
 
-        * { box-sizing: border-box; margin: 0; padding: 0; }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
         body {
             font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
@@ -34,11 +39,6 @@
             flex-direction: column;
             overflow: hidden;
             page-break-after: always;
-        }
-
-        /* ── Custom Element Display Enablers ──────────────────── */
-        page-sub-header, bullet-item, page-footer {
-            display: block;
         }
 
         /* ── Page Layout & Flow ───────────────────────────────── */
@@ -72,7 +72,7 @@
 
         .sub-header-divider {
             height: 2px;
-            width: 50px;
+            width: 200px;
             background: var(--gold);
             border-radius: 2px;
         }
@@ -129,6 +129,7 @@
         }
     </style>
 </head>
+
 <body>
 
     <div class="page-body pdf-flex-page">
@@ -138,36 +139,34 @@
 
         <!-- Main Content Area -->
         <div class="content-wrapper">
-            
+
             <p class="text-paragraph">
-                The primary aim of IntgraServeAI is to bridge the gap between static knowledge retrieval and dynamic, context-aware operational execution. To address the systemic challenges identified in the problem definition, this project sets forth a series of specific, measurable technical objectives designed to culminate in a robust, enterprise-grade AI architecture.
+                The primary aim of IntgraServeAI is to bridge the gap between static knowledge retrieval and dynamic,
+                context-aware operational execution. To address the systemic challenges identified in the problem
+                definition, this project sets forth a series of specific, measurable technical objectives designed to
+                culminate in a robust, enterprise-grade AI architecture.
             </p>
 
             <!-- Objectives List -->
             <div class="objectives-list">
-                
-                <bullet-item 
-                    title="Unified Knowledge Architecture:" 
+
+                <bullet-item title="Unified Knowledge Architecture:"
                     content="To design and implement a highly accurate Retrieval-Augmented Generation (RAG) pipeline capable of securely ingesting, vectorizing, and querying proprietary organizational data to ground LLM responses.">
                 </bullet-item>
 
-                <bullet-item 
-                    title="Dynamic Action Orchestration:" 
+                <bullet-item title="Dynamic Action Orchestration:"
                     content="To engineer a protocol-agnostic Action Engine that allows the LLM to autonomously discover and execute business logic across external APIs (e.g., REST, GraphQL) without requiring rigid, hardcoded integrations.">
                 </bullet-item>
 
-                <bullet-item 
-                    title="Contextual Memory Management:" 
+                <bullet-item title="Contextual Memory Management:"
                     content="To develop a scalable conversational state management system that retains user context, historical interactions, and session metadata across multi-turn, complex support workflows.">
                 </bullet-item>
 
-                <bullet-item 
-                    title="Extensibility and Portability:" 
+                <bullet-item title="Extensibility and Portability:"
                     content="To ensure the system is highly modular and platform-agnostic, allowing seamless deployment as a microservice into various enterprise environments with minimal architectural friction.">
                 </bullet-item>
 
-                <bullet-item 
-                    title="Performance and Latency Optimization:" 
+                <bullet-item title="Performance and Latency Optimization:"
                     content="To guarantee enterprise-grade responsiveness by optimizing embedding generation, semantic search retrieval times, and the orchestration routing layers within the Python backend.">
                 </bullet-item>
 
@@ -181,4 +180,5 @@
     </div>
 
 </body>
+
 </html>
