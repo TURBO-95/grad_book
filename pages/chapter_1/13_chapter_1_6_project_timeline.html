@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -7,15 +8,19 @@
     <style>
         /* ── Design Tokens ────────────────────────────────────── */
         :root {
-            --primary:   #1a365d;
-            --gold:      #c6a254;
+            --primary: #1a365d;
+            --gold: #c6a254;
             --text-dark: #2d3748;
-            --text-muted:#718096;
-            --surface:   #f8fafc;
-            --border:    #e2e8f0;
+            --text-muted: #718096;
+            --surface: #f8fafc;
+            --border: #e2e8f0;
         }
 
-        * { box-sizing: border-box; margin: 0; padding: 0; }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
         body {
             font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
@@ -34,11 +39,6 @@
             flex-direction: column;
             overflow: hidden;
             page-break-after: always;
-        }
-
-        /* ── Custom Element Display Enablers ──────────────────── */
-        page-sub-header, timeline-row, page-footer {
-            display: block;
         }
 
         /* ── Page Layout & Flow ───────────────────────────────── */
@@ -72,7 +72,7 @@
 
         .sub-header-divider {
             height: 2px;
-            width: 50px;
+            width: 200px;
             background: var(--gold);
             border-radius: 2px;
         }
@@ -100,7 +100,7 @@
             letter-spacing: 1px;
         }
 
-        .timeline-header > div {
+        .timeline-header>div {
             padding: 14px 18px;
         }
 
@@ -109,7 +109,8 @@
             display: grid;
             grid-template-columns: 20% 28% 1fr;
             border-bottom: 1px solid var(--border);
-            align-items: center; /* Vertically centers the text */
+            align-items: center;
+            /* Vertically centers the text */
         }
 
         /* Removes border from the absolute last row inside the container */
@@ -153,6 +154,7 @@
         }
     </style>
 </head>
+
 <body>
 
     <div class="page-body pdf-flex-page">
@@ -162,14 +164,16 @@
 
         <!-- Main Content Area -->
         <div class="content-wrapper">
-            
+
             <p class="text-paragraph">
-                The execution of the IntgraServeAI project is structurally divided into six distinct, consecutive phases spanning an academic year, ensuring a systematic transition from foundational research to final delivery.
+                The execution of the IntgraServeAI project is structurally divided into six distinct, consecutive phases
+                spanning an academic year, ensuring a systematic transition from foundational research to final
+                delivery.
             </p>
 
             <!-- CSS Grid Timeline Table -->
             <div class="timeline-container">
-                
+
                 <!-- Table Header -->
                 <div class="timeline-header">
                     <div>Period</div>
@@ -178,39 +182,27 @@
                 </div>
 
                 <!-- Table Rows using Component -->
-                <timeline-row 
-                    period="Oct–Nov 2025" 
-                    phase="Foundation &amp; Planning"
+                <timeline-row period="Oct–Nov 2025" phase="Foundation &amp; Planning"
                     tasks="Idea discussion, scope finalization, technology stack selection, literature review, system architecture design, and development environment setup.">
                 </timeline-row>
 
-                <timeline-row 
-                    period="Dec–Jan 2026" 
-                    phase="Core Service Development"
+                <timeline-row period="Dec–Jan 2026" phase="Core Service Development"
                     tasks="Build basic service framework, integrate core LLM API, develop conversation management logic, establish unit testing, and logging setup.">
                 </timeline-row>
 
-                <timeline-row 
-                    period="Feb–Mar 2026" 
-                    phase="RAG Implementation"
+                <timeline-row period="Feb–Mar 2026" phase="RAG Implementation"
                     tasks="Vector database setup, document processing, embedding pipeline creation, implement retrieval logic, and LLM integration testing.">
                 </timeline-row>
 
-                <timeline-row 
-                    period="Apr–May 2026" 
-                    phase="Dynamic Action Implementation"
+                <timeline-row period="Apr–May 2026" phase="Dynamic Action Implementation"
                     tasks="Develop mock server, implement client discovery, translate APIs to LLM tool schemas, and execute full system integration testing.">
                 </timeline-row>
 
-                <timeline-row 
-                    period="Jun–Jul 2026" 
-                    phase="Testing &amp; Refinement"
+                <timeline-row period="Jun–Jul 2026" phase="Testing &amp; Refinement"
                     tasks="End-to-end system testing, latency/performance tuning, develop the demonstration UI dashboard, and finalize user acceptance testing.">
                 </timeline-row>
 
-                <timeline-row 
-                    period="Aug–Sep 2026" 
-                    phase="Finalization &amp; Delivery"
+                <timeline-row period="Aug–Sep 2026" phase="Finalization &amp; Delivery"
                     tasks="Finalize all architectural documentation, write the final graduation thesis report, and prepare for the final project defense presentation.">
                 </timeline-row>
 
@@ -224,4 +216,5 @@
     </div>
 
 </body>
+
 </html>

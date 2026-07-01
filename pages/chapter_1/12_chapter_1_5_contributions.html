@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -7,15 +8,19 @@
     <style>
         /* ── Design Tokens ────────────────────────────────────── */
         :root {
-            --primary:   #1a365d;
-            --gold:      #c6a254;
+            --primary: #1a365d;
+            --gold: #c6a254;
             --text-dark: #2d3748;
-            --text-muted:#718096;
-            --surface:   #f8fafc;
-            --border:    #e2e8f0;
+            --text-muted: #718096;
+            --surface: #f8fafc;
+            --border: #e2e8f0;
         }
 
-        * { box-sizing: border-box; margin: 0; padding: 0; }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
         body {
             font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
@@ -36,11 +41,6 @@
             page-break-after: always;
         }
 
-        /* ── Custom Element Display Enablers ──────────────────── */
-        page-sub-header, bullet-item, page-footer {
-            display: block;
-        }
-
         /* ── Page Layout & Flow ───────────────────────────────── */
         .content-wrapper {
             flex: 1;
@@ -53,7 +53,8 @@
             text-align: justify;
             color: var(--text-dark);
             margin-bottom: 20px;
-            text-indent: 30px; /* Standard academic paragraph indent */
+            text-indent: 30px;
+            /* Standard academic paragraph indent */
         }
 
         /* ── Sub Header Component ─────────────────────────────── */
@@ -72,7 +73,7 @@
 
         .sub-header-divider {
             height: 2px;
-            width: 50px;
+            width: 200px;
             background: var(--gold);
             border-radius: 2px;
         }
@@ -129,6 +130,7 @@
         }
     </style>
 </head>
+
 <body>
 
     <div class="page-body pdf-flex-page">
@@ -138,25 +140,26 @@
 
         <!-- Main Content Area -->
         <div class="content-wrapper">
-            
+
             <p class="text-paragraph">
-                While IntgraServeAI is fundamentally an academic graduation project, its architecture is engineered with a viable commercialization strategy and profound industry applicability in mind. The primary contribution of this study is the proposal and implementation of a universally integratable AI engine that transforms digital user engagement. Specifically, this study contributes to the field of software engineering and applied AI in the following ways:
+                While IntgraServeAI is fundamentally an academic graduation project, its architecture is engineered with
+                a viable commercialization strategy and profound industry applicability in mind. The primary
+                contribution of this study is the proposal and implementation of a universally integratable AI engine
+                that transforms digital user engagement. Specifically, this study contributes to the field of software
+                engineering and applied AI in the following ways:
             </p>
 
             <div class="contributions-list">
-                
-                <bullet-item 
-                    title="Drastic Reduction in Integration Overhead:" 
+
+                <bullet-item title="Drastic Reduction in Integration Overhead:"
                     content="By demonstrating a dynamic, protocol-agnostic Action Engine, this study provides a blueprint for eliminating the need for costly and time-consuming bespoke developer code typically required for each new tool integration.">
                 </bullet-item>
 
-                <bullet-item 
-                    title="Unlocking Proprietary Data Value:" 
+                <bullet-item title="Unlocking Proprietary Data Value:"
                     content="The research showcases a secure methodology for seamlessly connecting siloed enterprise knowledge with operational enterprise actions, ensuring all AI-driven interactions are safe, accurate, and value-additive.">
                 </bullet-item>
 
-                <bullet-item 
-                    title="Advancing Autonomous Workflows:" 
+                <bullet-item title="Advancing Autonomous Workflows:"
                     content="This project proves the viability of using LLMs not just as conversational interfaces, but as orchestration engines capable of executing complex, multi-step workflows that traditionally required human intervention, thereby significantly increasing operational efficiency.">
                 </bullet-item>
 
@@ -170,4 +173,5 @@
     </div>
 
 </body>
+
 </html>
