@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Chapter 2.2 — Background (Part 10)</title>
+    <style>
+        :root { --primary: #1a365d; --gold: #c6a254; --text-dark: #2d3748; --text-muted:#718096; --surface: #f8fafc; --border: #e2e8f0; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; color: var(--text-dark); background: #ffffff; font-size: 10.5pt; line-height: 1.6; }
+        .page-body { width: 100%; height: 100vh; padding: 42px 52px; display: flex; flex-direction: column; overflow: hidden; page-break-after: always; }
+        code-block, page-footer { display: block; }
+        .content-wrapper { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
+        .sub-section-title { font-size: 12pt; color: var(--primary); font-weight: 700; margin-top: 10px; margin-bottom: 12px; }
+        .text-paragraph { text-align: justify; color: var(--text-dark); margin-bottom: 16px; text-indent: 30px; }
+        
+        /* ── Code Block Component Styles ──────────────────────── */
+        .code-block {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 16px 20px;
+            margin: 12px 0 16px 0;
+            text-align: left;
+        }
+        .code-block pre { margin: 0; white-space: pre-wrap; word-wrap: break-word;}
+        .code-block code {
+            font-family: Consolas, "Courier New", monospace;
+            font-size: 8.5pt; /* Slightly smaller to fit JSON clearly */
+            color: var(--primary);
+            line-height: 1.4;
+        }
+
+        .page-footer { margin-top: auto; text-align: center; padding-top: 18px; flex-shrink: 0; }
+        .page-number { font-size: 11pt; font-weight: bold; color: var(--text-muted); font-family: 'Helvetica Neue', Arial, sans-serif; }
+    </style>
+</head>
+<body>
+    <div class="page-body pdf-flex-page">
+        <div class="content-wrapper">
+            <h4 class="sub-section-title">Function Calling and Tool Use via JSON Schemas</h4>
+            
+            <p class="text-paragraph">
+                While ReAct provides the cognitive loop, the mechanical bridge between a probabilistic language model and a deterministic software API requires a rigid data structure. Enterprise APIs (REST, gRPC, etc.) do not accept natural language; they require strictly typed, meticulously formatted payloads (most commonly JSON). To facilitate this, foundational model developers explicitly fine-tune LLMs for <i>Function Calling</i> (or Tool Use).
+            </p>
+
+            <p class="text-paragraph">
+                The orchestrating application provides the LLM with a system prompt containing an array of available tools, defined using standard JSON Schema syntax. The LLM is trained to parse this schema and, instead of generating text, output a perfectly structured JSON string containing the exact arguments required by the target API.
+            </p>
+
+            <!-- JSON Payload using code-block -->
+            <code-block content="// Orchestrator provides Tool Definition to LLM:&#10;{&#10;  &quot;name&quot;: &quot;update_shipping_address&quot;,&#10;  &quot;description&quot;: &quot;Updates the delivery address for an active order.&quot;,&#10;  &quot;parameters&quot;: {&#10;    &quot;type&quot;: &quot;object&quot;,&#10;    &quot;properties&quot;: {&#10;      &quot;order_id&quot;: { &quot;type&quot;: &quot;string&quot;, &quot;description&quot;: &quot;The unique ID of the order&quot; },&#10;      &quot;new_address&quot;: { &quot;type&quot;: &quot;string&quot;, &quot;description&quot;: &quot;The full new shipping address&quot; }&#10;    },&#10;    &quot;required&quot;: [&quot;order_id&quot;, &quot;new_address&quot;]&#10;  }&#10;}&#10;&#10;// LLM mathematically determines intent and outputs deterministic payload:&#10;{&#10;  &quot;name&quot;: &quot;update_shipping_address&quot;,&#10;  &quot;arguments&quot;: &quot;{ \&quot;order_id\&quot;: \&quot;9876\&quot;, \&quot;new_address\&quot;: \&quot;123 Tech Avenue, CA\&quot; }&quot;&#10;}"></code-block>
+
+            <p class="text-paragraph">
+                By treating the LLM as a highly advanced text-to-JSON compiler, developers can safely map probabilistic human intent into executable code. If a required parameter is missing, the LLM recognizes the omission in the schema and naturally asks the user for clarification before formulating the final API call.
+            </p>
+        </div>
+        <page-footer page="18"></page-footer>
+    </div>
+</body>
+</html>

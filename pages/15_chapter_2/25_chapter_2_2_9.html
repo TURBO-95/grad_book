@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Chapter 2.2 — Background (Part 9)</title>
+    <style>
+        :root { --primary: #1a365d; --gold: #c6a254; --text-dark: #2d3748; --text-muted:#718096; --surface: #f8fafc; --border: #e2e8f0; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; color: var(--text-dark); background: #ffffff; font-size: 10.5pt; line-height: 1.6; }
+        .page-body { width: 100%; height: 100vh; padding: 42px 52px; display: flex; flex-direction: column; overflow: hidden; page-break-after: always; }
+        code-block, page-footer { display: block; }
+        .content-wrapper { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
+        .sub-section-title { font-size: 12pt; color: var(--primary); font-weight: 700; margin-top: 10px; margin-bottom: 12px; }
+        .text-paragraph { text-align: justify; color: var(--text-dark); margin-bottom: 16px; text-indent: 30px; }
+        
+        /* ── Code Block Component Styles ──────────────────────── */
+        .code-block {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 16px 20px;
+            margin: 12px 0 20px 0;
+            text-align: left;
+        }
+        .code-block pre { margin: 0; white-space: pre-wrap; word-wrap: break-word;}
+        .code-block code {
+            font-family: Consolas, "Courier New", monospace;
+            font-size: 9pt;
+            color: var(--primary);
+            line-height: 1.5;
+        }
+
+        .page-footer { margin-top: auto; text-align: center; padding-top: 18px; flex-shrink: 0; }
+        .page-number { font-size: 11pt; font-weight: bold; color: var(--text-muted); font-family: 'Helvetica Neue', Arial, sans-serif; }
+    </style>
+</head>
+<body>
+    <div class="page-body pdf-flex-page">
+        <div class="content-wrapper">
+            <h4 class="sub-section-title">The ReAct Framework: Synergizing Reasoning and Acting</h4>
+            
+            <p class="text-paragraph">
+                The theoretical leap from chatbot to autonomous agent was catalyzed by the development of novel prompting and orchestration frameworks, most notably the <i>ReAct (Reasoning and Acting)</i> paradigm, introduced by Yao et al. (2022). Prior to ReAct, attempts to make LLMs perform actions resulted in erratic behavior, as models would either blindly guess API parameters without considering the context, or enter infinite loops of action generation without evaluating the results.
+            </p>
+
+            <p class="text-paragraph">
+                The ReAct framework elegantly solves this by forcing the LLM to interleave explicit "Thought" traces with "Action" commands, followed by an external "Observation" injection. By externalizing the internal reasoning process into the context window, the model can logically evaluate the outcome of its actions before proceeding. A standard ReAct cognitive loop operates as follows:
+            </p>
+
+            <!-- ReAct Trace using code-block -->
+            <code-block content="Question: &quot;What is the status of order #9876, and can I upgrade its shipping to overnight?&quot;&#10;&#10;Thought 1: I need to find the current status of order #9876 first.&#10;Action 1: get_order_status(order_id=&quot;9876&quot;)&#10;Observation 1: {&quot;status&quot;: &quot;processing&quot;, &quot;shipping&quot;: &quot;standard&quot;}&#10;&#10;Thought 2: The order is still processing, which means shipping can be upgraded. I will now call the upgrade tool.&#10;Action 2: upgrade_shipping(order_id=&quot;9876&quot;, new_speed=&quot;overnight&quot;)&#10;Observation 2: {&quot;success&quot;: true, &quot;new_fee&quot;: 15.00}&#10;&#10;Thought 3: The shipping was successfully upgraded. I can now inform the user.&#10;Final Answer: Your order #9876 is currently processing, and I have successfully upgraded your shipping to overnight. A fee of $15.00 has been applied."></code-block>
+
+            <p class="text-paragraph">
+                This iterative feedback loop is revolutionary because it grants the LLM <i>agency</i>. It allows the model to handle exceptions dynamically; if Action 1 returned an error (e.g., "Order already shipped"), Thought 2 would recognize the failure and alter the execution path to inform the customer that an upgrade is no longer possible, avoiding hallucination.
+            </p>
+        </div>
+        <page-footer page="17"></page-footer>
+    </div>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Chapter 2.2 — Background (Part 7)</title>
+    <style>
+        :root { --primary: #1a365d; --gold: #c6a254; --text-dark: #2d3748; --text-muted:#718096; --surface: #f8fafc; --border: #e2e8f0; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; color: var(--text-dark); background: #ffffff; font-size: 10.5pt; line-height: 1.6; }
+        .page-body { width: 100%; height: 100vh; padding: 42px 52px; display: flex; flex-direction: column; overflow: hidden; page-break-after: always; }
+        code-block, highlight-box, page-footer { display: block; }
+        .content-wrapper { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
+        .sub-section-title { font-size: 12pt; color: var(--primary); font-weight: 700; margin-top: 10px; margin-bottom: 12px; }
+        .text-paragraph { text-align: justify; color: var(--text-dark); margin-bottom: 16px; text-indent: 30px; }
+        
+        /* ── Code Block Component Styles ──────────────────────── */
+        .code-block {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 16px 20px;
+            margin: 12px 0 20px 0;
+            text-align: left;
+        }
+        .code-block pre { margin: 0; white-space: pre-wrap; word-wrap: break-word;}
+        .code-block code {
+            font-family: Consolas, "Courier New", monospace;
+            font-size: 9.5pt;
+            color: var(--primary);
+            line-height: 1.5;
+        }
+
+        /* ── Highlight Box Component Styles ───────────────────── */
+        .highlight-box {
+            background: var(--surface);
+            border-left: 4px solid var(--gold);
+            padding: 20px 24px;
+            border-radius: 0 6px 6px 0;
+            margin-top: 12px;
+            text-align: justify;
+            font-size: 10.5pt;
+        }
+        .highlight-title { color: var(--primary); margin-right: 4px; font-weight: 700; }
+
+        .page-footer { margin-top: auto; text-align: center; padding-top: 18px; flex-shrink: 0; }
+        .page-number { font-size: 11pt; font-weight: bold; color: var(--text-muted); font-family: 'Helvetica Neue', Arial, sans-serif; }
+    </style>
+</head>
+<body>
+    <div class="page-body pdf-flex-page">
+        <div class="content-wrapper">
+            <h4 class="sub-section-title">The Generation Phase: Prompt Engineering for Grounding</h4>
+            
+            <p class="text-paragraph">
+                The final phase of the RAG architecture synthesizes the retrieved information. The IntgraServeAI orchestrator (utilizing frameworks like LangChain) dynamically constructs an augmented prompt. This prompt is carefully engineered to include strict system instructions, the retrieved top-\(k\) text chunks, and the user's original query. A typical augmented prompt template follows this structure:
+            </p>
+
+            <!-- Using code-block for the prompt template -->
+            <code-block content="System: You are an intelligent corporate assistant. Answer the user's question using ONLY the provided Context. If the answer is not contained within the Context, you must reply 'I do not have the information to answer that.' Do not hallucinate.&#10;&#10;Context: [Injected Top-K Retrieved Document Chunks]&#10;&#10;User Query: [Original User Question]"></code-block>
+
+            <p class="text-paragraph">
+                By explicitly constraining the LLM's generation parameters to the retrieved context, the system effectively bypasses the model's static memory and prevents it from inventing facts. The LLM acts purely as a highly advanced reasoning and summarization engine, translating the raw, retrieved corporate data into a natural, conversational response for the end-user.
+            </p>
+
+            <highlight-box 
+                title="Relevance to IntgraServeAI:" 
+                content="The rigorous implementation of this RAG pipeline forms the 'Contextual Knowledge Retrieval' pillar of the project. By leveraging ChromaDB as the underlying vector store and utilizing state-of-the-art embedding models, the platform guarantees that its conversational responses are deeply grounded in verified organizational knowledge. This architectural decision transforms the service from an unreliable chatbot into a highly trusted, enterprise-ready digital assistant.">
+            </highlight-box>
+        </div>
+        <page-footer page="15"></page-footer>
+    </div>
+</body>
+</html>

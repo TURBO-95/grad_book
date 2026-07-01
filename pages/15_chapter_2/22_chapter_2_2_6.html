@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Chapter 2.2 — Background (Part 6)</title>
+    <style>
+        :root { --primary: #1a365d; --gold: #c6a254; --text-dark: #2d3748; --text-muted:#718096; --surface: #f8fafc; --border: #e2e8f0; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; color: var(--text-dark); background: #ffffff; font-size: 10.5pt; line-height: 1.6; }
+        .page-body { width: 100%; height: 100vh; padding: 42px 52px; display: flex; flex-direction: column; overflow: hidden; page-break-after: always; }
+        math-block, page-footer { display: block; }
+        .content-wrapper { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
+        .sub-section-title { font-size: 12pt; color: var(--primary); font-weight: 700; margin-top: 10px; margin-bottom: 12px; }
+        .text-paragraph { text-align: justify; color: var(--text-dark); margin-bottom: 16px; text-indent: 30px; }
+        
+        /* ── Code/Math Block Component Styles ─────────────────── */
+        .code-block {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 16px 20px;
+            margin: 12px 0 20px 0;
+            text-align: center;
+        }
+
+        .page-footer { margin-top: auto; text-align: center; padding-top: 18px; flex-shrink: 0; }
+        .page-number { font-size: 11pt; font-weight: bold; color: var(--text-muted); font-family: 'Helvetica Neue', Arial, sans-serif; }
+    </style>
+</head>
+<body>
+    <div class="page-body pdf-flex-page">
+        <div class="content-wrapper">
+            <h4 class="sub-section-title">High-Dimensional Vector Embeddings</h4>
+            
+            <p class="text-paragraph">
+                Once the data is appropriately chunked, it must be transformed into a machine-readable format through the use of an <i>Embedding Model</i>. Embedding models are specialized neural networks (such as OpenAI's <code>text-embedding-3</code> or alternatives like <code>BGE-large</code>) trained specifically to map natural language into a continuous, high-dimensional vector space.
+            </p>
+
+            <p class="text-paragraph">
+                In this vector space, every chunk of text is represented as a dense array of floating-point numbers (often 768 or 1536 dimensions). The fundamental mathematical premise of embeddings is that text with similar semantic meanings will be mapped to coordinates physically close to each other. For example, "The customer wants a refund" and "The client is asking for their money back" share almost no vocabulary, yet a robust embedding model will map their vectors to nearly identical coordinates because their underlying intent is the same.
+            </p>
+
+            <h4 class="sub-section-title">Vector Databases and Similarity Metrics</h4>
+            
+            <p class="text-paragraph">
+                The generated embeddings are stored alongside their original text chunks and metadata in a specialized infrastructure known as a Vector Database (e.g., ChromaDB, Pinecone, or FAISS). Unlike traditional relational databases (SQL) that rely on exact keyword matching, Vector Databases are optimized for performing highly efficient Nearest Neighbor (NN) searches in high-dimensional space.
+            </p>
+
+            <p class="text-paragraph">
+                When a user queries IntgraServeAI, their natural language is passed through the same embedding model, producing a "Query Vector." The Vector Database then rapidly calculates the mathematical distance between the Query Vector and all Document Vectors. The most common mathematical metric used for this comparison is <strong>Cosine Similarity</strong>, which measures the cosine of the angle between two vectors:
+            </p>
+
+            <!-- KaTeX Math Block Integration -->
+            <math-block content="$$ \text{Cosine Similarity}(\mathbf{A}, \mathbf{B}) = \frac{\mathbf{A} \cdot \mathbf{B}}{\|\mathbf{A}\| \|\mathbf{B}\|} $$"></math-block>
+
+            <p class="text-paragraph">
+                A Cosine Similarity score of \( 1 \) indicates that the vectors are pointing in the exact same direction (perfect semantic match), \( 0 \) indicates orthogonality (no relation), and \( -1 \) indicates exact opposites. The database returns the top-\(k\) chunks (typically the 3 to 5 most semantically similar text fragments) to the orchestrating application.
+            </p>
+        </div>
+        <page-footer page="14"></page-footer>
+    </div>
+</body>
+</html>

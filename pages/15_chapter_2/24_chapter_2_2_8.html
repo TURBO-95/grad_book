@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Chapter 2.2 — Background (Part 8)</title>
+    <style>
+        :root {
+            --primary:   #1a365d;
+            --gold:      #c6a254;
+            --text-dark: #2d3748;
+            --text-muted:#718096;
+            --surface:   #f8fafc;
+            --border:    #e2e8f0;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            color: var(--text-dark);
+            background: #ffffff;
+            font-size: 10.5pt;
+            line-height: 1.6;
+        }
+
+        .page-body {
+            width: 100%;
+            height: 100vh;
+            padding: 42px 52px;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            page-break-after: always;
+        }
+
+        page-sub-header, page-footer { display: block; }
+
+        .content-wrapper {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .sub-section-title {
+            font-size: 12pt;
+            color: var(--primary);
+            font-weight: 700;
+            margin-top: 10px;
+            margin-bottom: 12px;
+        }
+
+        .text-paragraph {
+            text-align: justify;
+            color: var(--text-dark);
+            margin-bottom: 16px;
+            text-indent: 30px;
+        }
+
+        .page-sub-header { margin-bottom: 24px; flex-shrink: 0; }
+        .sub-header-title { font-size: 20pt; color: var(--primary); font-weight: 800; letter-spacing: 0.5px; margin-bottom: 8px; }
+        .sub-header-divider { height: 2px; width: 50px; background: var(--gold); border-radius: 2px; }
+
+        .page-footer { margin-top: auto; text-align: center; padding-top: 18px; flex-shrink: 0; }
+        .page-number { font-size: 11pt; font-weight: bold; color: var(--text-muted); font-family: 'Helvetica Neue', Arial, sans-serif; }
+    </style>
+</head>
+<body>
+    <div class="page-body pdf-flex-page">
+        
+        <!-- Header -->
+        <page-sub-header title="2.2.3 From Passive Chatbots to Action-Oriented Agents"></page-sub-header>
+
+        <div class="content-wrapper">
+            <p class="text-paragraph">
+                The integration of Retrieval-Augmented Generation (RAG) fundamentally resolved the epistemological limitations of base LLMs, providing a robust mechanism for factual grounding. However, as enterprise demands evolved, a secondary, systemic bottleneck became glaringly apparent: the limitation of "Read-Only" architectures. While RAG-empowered models can ingest and synthesize proprietary data to answer complex inquiries with unprecedented accuracy, they remain fundamentally passive observers. They exist in a deterministic sandbox where their maximum utility is informational deflection.
+            </p>
+
+            <h4 class="sub-section-title">The Limitations of "Read-Only" RAG Systems</h4>
+            
+            <p class="text-paragraph">
+                In a practical enterprise environment, information retrieval is rarely the final objective of a customer or internal user; rather, it is typically a prerequisite for a transaction. For instance, a customer inquiring about a shipping policy (an informational intent) generally does so as a precursor to modifying their shipping address or requesting a refund (transactional intents). A purely RAG-based system can flawlessly retrieve the policy from the vector database, but it is architecturally incapable of executing the database <code>UPDATE</code> query required to change the address.
+            </p>
+
+            <p class="text-paragraph">
+                This "read-only" limitation forces a catastrophic break in the automation pipeline. Once the informational phase concludes, the user must be routed back to a human agent or forced to navigate a manual graphical user interface (GUI) to complete their task. To realize true end-to-end automation, the AI paradigm must shift from passive text generators to active, autonomous software agents capable of bi-directional interaction with their digital environments.
+            </p>
+        </div>
+
+        <page-footer page="16"></page-footer>
+    </div>
+</body>
+</html>

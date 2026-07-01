@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Chapter 2.4 — Competitor Analysis (Part 1)</title>
+    <style>
+        /* ── Design Tokens ────────────────────────────────────── */
+        :root {
+            --primary:   #1a365d;
+            --gold:      #c6a254;
+            --text-dark: #2d3748;
+            --text-muted:#718096;
+            --surface:   #f8fafc;
+            --border:    #e2e8f0;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            color: var(--text-dark);
+            background: #ffffff;
+            font-size: 10.5pt;
+            line-height: 1.6;
+        }
+
+        .page-body {
+            width: 100%;
+            height: 100vh;
+            padding: 42px 52px;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            page-break-after: always;
+        }
+
+        page-sub-header, competitor-row, page-footer { display: block; }
+
+        .content-wrapper { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
+
+        .text-paragraph {
+            text-align: justify;
+            color: var(--text-dark);
+            margin-bottom: 16px;
+            text-indent: 30px;
+        }
+
+        /* ── Sub Header Component Styles ──────────────────────── */
+        .page-sub-header { margin-bottom: 24px; flex-shrink: 0; }
+        .sub-header-title { font-size: 20pt; color: var(--primary); font-weight: 800; letter-spacing: 0.5px; margin-bottom: 8px; }
+        .sub-header-divider { height: 2px; width: 200px; background: var(--gold); border-radius: 2px; }
+
+        /* ── Competitor Table Styles ──────────────────────────── */
+        .table-caption {
+            font-size: 9.5pt;
+            font-weight: bold;
+            color: var(--primary);
+            margin-bottom: 8px;
+            text-align: left;
+            font-style: italic;
+        }
+
+        .competitor-table {
+            display: flex;
+            flex-direction: column;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            overflow: hidden;
+            background: #ffffff;
+            margin-top: 8px;
+        }
+
+        .comp-header {
+            display: grid;
+            grid-template-columns: 20% 25% 25% 30%;
+            background: var(--primary);
+            color: #ffffff;
+            font-size: 9pt;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .comp-header > div { padding: 12px 14px; }
+
+        /* Component Row Inner Styles */
+        .competitor-row {
+            display: grid;
+            grid-template-columns: 20% 25% 25% 30%;
+            border-bottom: 1px solid var(--border);
+        }
+        competitor-row:nth-child(even) .competitor-row { background: var(--surface); }
+        competitor-row:last-child .competitor-row { border-bottom: none; }
+        
+        .comp-col-meta, .comp-col-text { padding: 14px; font-size: 9.5pt; line-height: 1.5; }
+        .comp-category { font-weight: 800; color: var(--primary); margin-bottom: 4px; }
+        .comp-players { font-size: 8.5pt; color: var(--text-muted); font-weight: 600; }
+        .comp-col-text { color: var(--text-dark); }
+        .comp-diff { color: var(--primary); font-weight: 500; }
+
+        /* ── Page Footer Component Styles ─────────────────────── */
+        .page-footer { margin-top: auto; text-align: center; padding-top: 18px; flex-shrink: 0; }
+        .page-number { font-size: 11pt; font-weight: bold; color: var(--text-muted); font-family: 'Helvetica Neue', Arial, sans-serif; }
+    </style>
+</head>
+<body>
+    <div class="page-body pdf-flex-page">
+        <page-sub-header title="2.4 Competitor Analysis"></page-sub-header>
+
+        <div class="content-wrapper">
+            <p class="text-paragraph">
+                The market for AI-driven enterprise automation is highly fragmented and characterized by intense technological competition. To rigorously justify the novel architectural decisions underpinning IntgraServeAI, it is imperative to evaluate the existing competitive landscape. The contemporary market comprises a spectrum of solutions that can be categorized into three distinct paradigms: Walled Garden Enterprise Platforms, Conversational AI Platforms, and Open-Source Developer Frameworks.
+            </p>
+
+            <p class="text-paragraph">
+                The following analysis systematically dissects the architectural strengths and structural weaknesses of these paradigms. By applying an academic critique to their methodologies, this section demonstrates precisely why IntgraServeAI represents a necessary evolutionary step.
+            </p>
+
+            <div class="table-caption">Table 2.1: Competitive landscape evaluating architectural paradigms.</div>
+            <div class="competitor-table">
+                <!-- Header -->
+                <div class="comp-header">
+                    <div>Category &amp; Players</div>
+                    <div>Architectural Strengths</div>
+                    <div>Structural Weaknesses</div>
+                    <div>IntgraServeAI Differentiator</div>
+                </div>
+
+                <!-- Rows via Components -->
+                <competitor-row 
+                    category="Enterprise Platforms" 
+                    players="e.g., Salesforce, Zendesk"
+                    strengths="Deep, native integration with proprietary customer data ecosystems and existing operational dashboards."
+                    weaknesses="Highly inflexible architecture; historically hostile to custom external microservices; imposes severe vendor lock-in."
+                    differentiator="A platform-agnostic Action Engine designed for universal integration across heterogeneous stacks without infrastructure migration.">
+                </competitor-row>
+
+                <competitor-row 
+                    category="Conversational AI" 
+                    players="e.g., Intercom, Ada"
+                    strengths="Highly user-friendly, no-code interfaces enabling rapid deployment of deflection bots by non-technical teams."
+                    weaknesses="Shallow action capabilities mechanically constrained to deterministic, predefined conversation trees; catastrophic failure on edge cases."
+                    differentiator="Deep, dynamic multi-step task automation driven by probabilistic LLM reasoning (ReAct) rather than rigid flowcharts.">
+                </competitor-row>
+
+                <competitor-row 
+                    category="Open-Source Frameworks" 
+                    players="e.g., LangChain, LlamaIndex"
+                    strengths="Provides maximum mathematical flexibility and granular control for developers to build highly customized AI logic."
+                    weaknesses="Functions merely as fragmented toolkits; requires massive MLOps expertise to secure, scale, and deploy; astronomical overhead."
+                    differentiator="An enterprise-ready service that abstracts framework complexity into a secure, immediately deployable orchestration backend.">
+                </competitor-row>
+            </div>
+        </div>
+        <page-footer page="27"></page-footer>
+    </div>
+</body>
+</html>
