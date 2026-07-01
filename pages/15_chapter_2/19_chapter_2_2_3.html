@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Chapter 2.2 — Background (Part 3)</title>
+    <style>
+        /* (Same CSS tokens and layout) */
+        :root { --primary: #1a365d; --gold: #c6a254; --text-dark: #2d3748; --text-muted:#718096; --surface: #f8fafc; --border: #e2e8f0; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; color: var(--text-dark); background: #ffffff; font-size: 10.5pt; line-height: 1.6; }
+        .page-body { width: 100%; height: 100vh; padding: 42px 52px; display: flex; flex-direction: column; overflow: hidden; page-break-after: always; }
+        page-footer { display: block; }
+        .content-wrapper { flex: 1; display: flex; flex-direction: column; justify-content: center; overflow: hidden; }
+        .sub-section-title { font-size: 12pt; color: var(--primary); font-weight: 700; margin-bottom: 12px; }
+        .text-paragraph { text-align: justify; color: var(--text-dark); margin-bottom: 20px; text-indent: 30px; }
+        
+        .page-footer { margin-top: auto; text-align: center; padding-top: 18px; flex-shrink: 0; }
+        .page-number { font-size: 11pt; font-weight: bold; color: var(--text-muted); font-family: 'Helvetica Neue', Arial, sans-serif; }
+    </style>
+</head>
+<body>
+    <div class="page-body pdf-flex-page">
+        <div class="content-wrapper">
+            <h4 class="sub-section-title">The Lifecycle of an LLM: Pre-Training and Fine-Tuning</h4>
+            
+            <p class="text-paragraph">
+                The intelligence of a modern LLM is not magically imbued; it is meticulously cultivated through two distinct computational phases: Pre-training and Fine-tuning. Understanding this lifecycle is absolutely critical to grasping the systemic limitations that require enterprise platforms like IntgraServeAI to utilize RAG frameworks and Action Engines.
+            </p>
+
+            <p class="text-paragraph">
+                <strong>1. The Pre-Training Phase:</strong> In this initial phase, an untrained Transformer network is exposed to a massive corpus of raw, unlabeled text (often trillions of tokens scraped from the internet, books, and code repositories). The model undergoes self-supervised learning, where its sole objective is to predict the next token (word fragment) in a sequence. Through relentless trial and error, governed by backpropagation and gradient descent, the model iteratively adjusts billions of internal numerical weights. Over months of processing on massive GPU clusters, the LLM compresses the statistical structure of human knowledge into its parameters, creating what is known as its <i>parametric memory</i>.
+            </p>
+
+            <p class="text-paragraph">
+                <strong>2. The Fine-Tuning Phase:</strong> A base pre-trained model is essentially a sophisticated document-completer; if given the prompt "The capital of France is," it outputs "Paris." However, if given a question like "How do I reset my router?", a base model might simply generate more questions, mimicking internet forum structures. To transform the base model into an interactive agent, it undergoes Supervised Fine-Tuning (SFT). Human annotators create high-quality datasets of instructions and ideal responses, updating the model's weights to favor helpful, conversational formats.
+            </p>
+
+            <p class="text-paragraph">
+                To further align the model with human values, safety guidelines, and enterprise helpfulness, a technique called Reinforcement Learning from Human Feedback (RLHF) is frequently applied. A secondary "reward model" is trained on human preferences, which is then used to mathematically reward the primary LLM for generating safe, accurate, and highly polite responses, yielding the final instruction-tuned model.
+            </p>
+        </div>
+        <page-footer page="11"></page-footer>
+    </div>
+</body>
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Chapter 2.2 — Background (Part 5)</title>
+    <style>
+        :root {
+            --primary:   #1a365d;
+            --gold:      #c6a254;
+            --text-dark: #2d3748;
+            --text-muted:#718096;
+            --surface:   #f8fafc;
+            --border:    #e2e8f0;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            color: var(--text-dark);
+            background: #ffffff;
+            font-size: 10.5pt;
+            line-height: 1.6;
+        }
+
+        .page-body {
+            width: 100%;
+            height: 100vh;
+            padding: 42px 52px;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            page-break-after: always;
+        }
+
+        page-sub-header, page-footer { display: block; }
+
+        .content-wrapper {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .section-title {
+            font-size: 16pt;
+            color: var(--primary);
+            font-weight: 800;
+            margin-top: 10px;
+            margin-bottom: 16px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 8px;
+        }
+
+        .sub-section-title {
+            font-size: 12pt;
+            color: var(--primary);
+            font-weight: 700;
+            margin-top: 10px;
+            margin-bottom: 12px;
+        }
+
+        .text-paragraph {
+            text-align: justify;
+            color: var(--text-dark);
+            margin-bottom: 16px;
+            text-indent: 30px;
+        }
+
+        .page-sub-header { margin-bottom: 24px; flex-shrink: 0; }
+        .sub-header-title { font-size: 20pt; color: var(--primary); font-weight: 800; letter-spacing: 0.5px; margin-bottom: 8px; }
+        .sub-header-divider { height: 2px; width: 200px; background: var(--gold); border-radius: 2px; }
+
+        .page-footer { margin-top: auto; text-align: center; padding-top: 18px; flex-shrink: 0; }
+        .page-number { font-size: 11pt; font-weight: bold; color: var(--text-muted); font-family: 'Helvetica Neue', Arial, sans-serif; }
+    </style>
+</head>
+<body>
+    <div class="page-body pdf-flex-page">
+        
+        <!-- Header -->
+        <page-sub-header title="2.2.2 Retrieval-Augmented Generation (RAG)"></page-sub-header>
+
+        <div class="content-wrapper">
+            <p class="text-paragraph">
+                As established in the preceding section, the inherent epistemological limitations of standalone Large Language Models—namely, their propensity for hallucination and their static, frozen parametric memory—render them fundamentally unsuited for direct deployment as enterprise authorities. To mitigate these fatal flaws, the academic and industrial AI communities converged on a paradigm-shifting architectural framework: Retrieval-Augmented Generation (RAG). Formally introduced by Lewis et al. in 2020, RAG functions as an "epistemological bridge" connecting the probabilistic reasoning engine of an LLM with external, deterministic, and dynamically updatable knowledge bases.
+            </p>
+
+            <p class="text-paragraph">
+                Instead of relying on the LLM to retrieve facts from its internal neural weights (parametric memory), RAG forces the model to utilize non-parametric memory. The architecture bifurcates the information synthesis process into two distinct pipelines: the <i>Indexing Pipeline</i> (an asynchronous process for ingesting and storing corporate data) and the <i>Retrieval and Generation Pipeline</i> (a synchronous, real-time process executed when a user submits a query).
+            </p>
+
+            <h4 class="sub-section-title">The Indexing Pipeline: Data Ingestion and Semantic Chunking</h4>
+            
+            <p class="text-paragraph">
+                The foundation of any RAG system relies on the conversion of unstructured enterprise data (such as PDFs, HTML pages, and Markdown files) into a format that a machine can semantically search. However, current LLMs are constrained by a "context window"—a strict limit on the number of tokens they can process simultaneously. It is computationally impossible to feed a 10,000-page corporate policy manual into an LLM prompt directly. Therefore, the data must be fragmented through a process known as <i>Chunking</i>.
+            </p>
+
+            <p class="text-paragraph">
+                Chunking is not a trivial operation; the strategy chosen profoundly impacts the accuracy of the retrieval phase. If chunks are too small, they lose semantic context (e.g., a pronoun like "it" may be separated from the noun it references). If chunks are too large, they introduce "noise" that dilutes search relevance and consumes excessive context window space. State-of-the-art implementations, such as those utilized within IntgraServeAI, employ <i>Semantic Chunking</i> with sliding overlaps. A typical configuration fragments documents into 500-token chunks with a 50-token overlap, ensuring boundary logic does not sever critical contextual links.
+            </p>
+        </div>
+
+        <page-footer page="13"></page-footer>
+    </div>
+</body>
+</html>

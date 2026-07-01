@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Chapter 2.2 — Background (Part 4)</title>
+    <style>
+        /* (Same CSS tokens and layout) */
+        :root { --primary: #1a365d; --gold: #c6a254; --text-dark: #2d3748; --text-muted:#718096; --surface: #f8fafc; --border: #e2e8f0; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; color: var(--text-dark); background: #ffffff; font-size: 10.5pt; line-height: 1.6; }
+        .page-body { width: 100%; height: 100vh; padding: 42px 52px; display: flex; flex-direction: column; overflow: hidden; page-break-after: always; }
+        highlight-box, page-footer { display: block; }
+        .content-wrapper { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
+        .sub-section-title { font-size: 12pt; color: var(--primary); font-weight: 700; margin-top: 10px; margin-bottom: 12px; }
+        .text-paragraph { text-align: justify; color: var(--text-dark); margin-bottom: 16px; text-indent: 30px; }
+        
+        /* ── Highlight Box Component Styles ───────────────────── */
+        .highlight-box {
+            background: var(--surface);
+            border-left: 4px solid var(--gold);
+            padding: 20px 24px;
+            border-radius: 0 6px 6px 0;
+            margin-top: 20px;
+            text-align: justify;
+            font-size: 10.5pt;
+        }
+        .highlight-title { color: var(--primary); margin-right: 4px; font-weight: 700; }
+
+        .page-footer { margin-top: auto; text-align: center; padding-top: 18px; flex-shrink: 0; }
+        .page-number { font-size: 11pt; font-weight: bold; color: var(--text-muted); font-family: 'Helvetica Neue', Arial, sans-serif; }
+    </style>
+</head>
+<body>
+    <div class="page-body pdf-flex-page">
+        <div class="content-wrapper">
+            <h4 class="sub-section-title">Epistemological Limits: Hallucinations and the Static Memory Problem</h4>
+            
+            <p class="text-paragraph">
+                Despite the staggering cognitive leaps achieved through the Transformer architecture and advanced fine-tuning, LLMs harbor inherent, structural flaws that preclude them from acting as standalone enterprise authorities. These flaws are rooted in the epistemological nature of how LLMs "know" things.
+            </p>
+
+            <p class="text-paragraph">
+                First and foremost is the phenomenon of <strong>Hallucination</strong>. Unlike a relational database (SQL) that retrieves discrete, verified facts via an exact query match, an LLM generates responses probabilistically. It does not possess a lookup table for truth; it navigates a high-dimensional mathematical space, selecting the next most likely token. If asked about a specific SaaS penalty fee, the model does not query the actual contract. Instead, it predicts statistically likely words, often fabricating a confident yet entirely fictitious fee. Because the LLM lacks epistemic uncertainty (knowing what it does not know), these fabrications create unacceptable liabilities for enterprise deployment.
+            </p>
+
+            <p class="text-paragraph">
+                Secondly, LLMs suffer from the <strong>Static Memory Problem (The Knowledge Cutoff)</strong>. The vast parametric memory of an LLM is permanently frozen the moment its pre-training phase concludes. If an organization updates its return policy on a Tuesday, an LLM whose training concluded on Monday remains oblivious. Retraining massive models to inject daily knowledge is financially and computationally unfeasible. Furthermore, LLMs cannot natively access user-specific, real-time context (like live shipping status) because that data resides safely behind enterprise firewalls, entirely inaccessible to the model's frozen weights.
+            </p>
+
+            <highlight-box 
+                title="The Architectural Imperative:" 
+                content="The profound dichotomy between the natural language reasoning capabilities of LLMs and their severe epistemological limitations forms the exact technical mandate for IntgraServeAI. Because LLMs cannot be trusted as factual databases, the Retrieval-Augmented Generation (RAG) pipeline is implemented to force the model to read from live corporate documents. Similarly, because LLMs are isolated from dynamic systems, the Action Engine is required—allowing the LLM to query live databases and execute real-world transactions safely.">
+            </highlight-box>
+        </div>
+        <page-footer page="12"></page-footer>
+    </div>
+</body>
+</html>

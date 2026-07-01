@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Chapter 2.1 — Introduction</title>
+    <style>
+        /* ── Design Tokens ────────────────────────────────────── */
+        :root {
+            --primary:   #1a365d;
+            --gold:      #c6a254;
+            --text-dark: #2d3748;
+            --text-muted:#718096;
+            --surface:   #f8fafc;
+            --border:    #e2e8f0;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            color: var(--text-dark);
+            background: #ffffff;
+            font-size: 10.5pt;
+            line-height: 1.6;
+        }
+
+        /* ── PDF Page Container ───────────────────────────────── */
+        .page-body {
+            width: 100%;
+            height: 100vh;
+            padding: 42px 52px;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            page-break-after: always;
+        }
+
+        /* ── Page Layout & Flow ───────────────────────────────── */
+        .content-wrapper {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .text-paragraph {
+            text-align: justify;
+            color: var(--text-dark);
+            margin-bottom: 24px;
+            text-indent: 30px; /* Standard academic paragraph indent */
+            font-size: 11pt;
+            line-height: 1.65;
+        }
+
+        .text-paragraph:last-child {
+            margin-bottom: 0;
+        }
+
+        /* ── Sub Header Component Styles ──────────────────────── */
+        .page-sub-header {
+            margin-bottom: 24px;
+            flex-shrink: 0;
+        }
+
+        .sub-header-title {
+            font-size: 20pt;
+            color: var(--primary);
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+        }
+
+        .sub-header-divider {
+            height: 2px;
+            width: 200px;
+            background: var(--gold);
+            border-radius: 2px;
+        }
+
+        /* ── Page Footer Component Styles ─────────────────────── */
+        .page-footer {
+            margin-top: auto;
+            text-align: center;
+            padding-top: 18px;
+            flex-shrink: 0;
+        }
+
+        .page-number {
+            font-size: 11pt;
+            font-weight: bold;
+            color: var(--text-muted);
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="page-body pdf-flex-page">
+
+        <!-- Header -->
+        <page-sub-header title="2.1 Introduction"></page-sub-header>
+
+        <!-- Main Content Area -->
+        <div class="content-wrapper">
+            
+            <p class="text-paragraph">
+                The development of an advanced, enterprise-grade AI integration platform such as IntgraServeAI does not occur in a vacuum; it is the culmination of decades of research in natural language processing (NLP), information retrieval, and autonomous software engineering. A rigorous graduation project must be contextualized within the existing body of academic and industrial knowledge. Consequently, the primary objective of this literature review is to critically examine the theoretical foundations, historical evolution, and current technological landscape that necessitate and validate the proposed system.
+            </p>
+
+            <p class="text-paragraph">
+                This chapter provides a comprehensive review of the prevailing theories and existing paradigms relevant to enterprise automation and intelligent agents. It begins by establishing the technical background of Large Language Models (LLMs), outlining both their unprecedented cognitive capabilities and their inherent structural limitations. It subsequently explores Retrieval-Augmented Generation (RAG) as the standard mechanism for factual grounding, followed by an in-depth analysis of Action-Oriented Agents—the theoretical basis for the project's Action Engine. Finally, the chapter transitions from academic theory to applied market realities, providing a detailed analysis of the current conversational AI industry, existing commercial solutions, and how IntgraServeAI distinguishes itself from contemporary competitors.
+            </p>
+
+        </div>
+
+        <!-- Footer (Assuming Page 8, adjust as needed) -->
+        <page-footer page="8"></page-footer>
+
+    </div>
+
+</body>
+</html>

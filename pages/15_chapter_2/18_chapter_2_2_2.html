@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Chapter 2.2 — Background (Part 2)</title>
+    <style>
+        /* (Same CSS tokens and layout as previous file) */
+        :root { --primary: #1a365d; --gold: #c6a254; --text-dark: #2d3748; --text-muted:#718096; --surface: #f8fafc; --border: #e2e8f0; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; color: var(--text-dark); background: #ffffff; font-size: 10.5pt; line-height: 1.6; }
+        .page-body { width: 100%; height: 100vh; padding: 42px 52px; display: flex; flex-direction: column; overflow: hidden; page-break-after: always; }
+        code-block, page-footer { display: block; }
+        .content-wrapper { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
+        .sub-section-title { font-size: 12pt; color: var(--primary); font-weight: 700; margin-top: 10px; margin-bottom: 10px; }
+        .text-paragraph { text-align: justify; color: var(--text-dark); margin-bottom: 16px; text-indent: 30px; }
+        
+        /* ── Code Block Component Styles ──────────────────────── */
+        .code-block {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 16px 20px;
+            margin: 12px 0 20px 0;
+            text-align: center;
+        }
+        .code-block pre { margin: 0; }
+        .code-block code {
+            font-family: Consolas, "Courier New", monospace;
+            font-size: 10.5pt;
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .page-footer { margin-top: auto; text-align: center; padding-top: 18px; flex-shrink: 0; }
+        .page-number { font-size: 11pt; font-weight: bold; color: var(--text-muted); font-family: 'Helvetica Neue', Arial, sans-serif; }
+    </style>
+</head>
+<body>
+    <div class="page-body pdf-flex-page">
+        <div class="content-wrapper">
+            <p class="text-paragraph">
+                The integration of Deep Learning in the 2010s addressed n-gram limitations through the deployment of Recurrent Neural Networks (RNNs) and Long Short-Term Memory (LSTM) networks. RNNs processed text sequentially, passing information from one word to the next. While LSTMs achieved breakthroughs, their sequential nature introduced two fatal flaws: the vanishing gradient problem (forgetting early context) and an inability to undergo parallel processing. Because word <i>n</i> could not be processed until word <i>n-1</i> was completed, training these models on massive datasets was computationally prohibitive.
+            </p>
+
+            <h4 class="sub-section-title">The Transformer Breakthrough and the Mathematics of Self-Attention</h4>
+            
+            <p class="text-paragraph">
+                The sequential processing bottleneck of RNNs was entirely eradicated in 2017 with the publication of the seminal paper <i>"Attention Is All You Need"</i> by Vaswani et al. This research introduced the <strong>Transformer architecture</strong>, which dispensed with recurrence entirely. Instead, the Transformer processes entire sequences of text simultaneously in parallel, utilizing a novel mechanism known as <i>Self-Attention</i>.
+            </p>
+
+            <p class="text-paragraph">
+                Conceptually, Self-Attention allows a model to evaluate the relational importance of every single word in a sequence relative to every other word, regardless of positional distance. When reading, "The bank of the river was muddy, so I couldn't sit on the bank," a Transformer computes attention scores to realize the first "bank" relates strongly to "river" and "muddy" (indicating geography), distinguishing it from a financial institution.
+            </p>
+
+            <p class="text-paragraph">
+                Mathematically, this is achieved through the projection of input embeddings into three distinct learned matrices: <strong>Queries (Q)</strong>, <strong>Keys (K)</strong>, and <strong>Values (V)</strong>. The dot product of Query and Key vectors determines the compatibility (attention score) between words, normalized via Softmax, and multiplied by the Value vectors:
+            </p>
+
+            <math-block>
+                $$ \text{Attention}(Q, K, V) = \operatorname{softmax}\left(\frac{Q K^{T}}{\sqrt{d_k}}\right) V $$
+            </math-block>
+
+            <p class="text-paragraph">
+                The scaling factor (\( \sqrt{d_k} \)) prevents dot products from growing excessively large, ensuring stable gradients. By stacking multiple "attention heads" and feeding the results through massive feed-forward networks, Transformers build an extraordinarily deep, multi-dimensional geometric representation of language—serving as the bedrock for modern models like GPT and Llama.
+            </p>
+        </div>
+        <page-footer page="10"></page-footer>
+    </div>
+</body>
+</html>

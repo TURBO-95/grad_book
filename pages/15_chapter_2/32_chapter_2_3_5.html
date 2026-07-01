@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Chapter 2.3 — Relevant Work (Part 5)</title>
+    <style>
+        :root { --primary: #1a365d; --gold: #c6a254; --text-dark: #2d3748; --text-muted:#718096; --surface: #f8fafc; --border: #e2e8f0; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; color: var(--text-dark); background: #ffffff; font-size: 10.5pt; line-height: 1.6; }
+        .page-body { width: 100%; height: 100vh; padding: 42px 52px; display: flex; flex-direction: column; overflow: hidden; page-break-after: always; }
+        page-footer { display: block; }
+        .content-wrapper { flex: 1; display: flex; flex-direction: column; justify-content: center; overflow: hidden; }
+        
+        .sub-section-title { font-size: 12pt; color: var(--primary); font-weight: 700; margin-top: 10px; margin-bottom: 12px; }
+        .text-paragraph { text-align: justify; color: var(--text-dark); margin-bottom: 20px; text-indent: 30px; }
+
+        .page-footer { margin-top: auto; text-align: center; padding-top: 18px; flex-shrink: 0; }
+        .page-number { font-size: 11pt; font-weight: bold; color: var(--text-muted); font-family: 'Helvetica Neue', Arial, sans-serif; }
+    </style>
+</head>
+<body>
+    <div class="page-body pdf-flex-page">
+        <div class="content-wrapper">
+            
+            <h4 class="sub-section-title">Financial Services and FinTech</h4>
+            
+            <p class="text-paragraph">
+                The deployment of AI within banking, wealth management, and FinTech introduces a severe requirement for absolute determinism, precision, and cryptographic security. Financial institutions operate under strict fiduciary duties and rigorous regulatory compliance frameworks (such as GDPR or PCI-DSS). In this vertical, hallucinations or unauthorized data access represent catastrophic systemic failures.
+            </p>
+
+            <p class="text-paragraph">
+                For Financial Services, IntgraServeAI’s architecture ensures that the LLM is strictly confined to retrieving data from highly curated, compliant legal and product documentation via the vector database. When executing actions—such as processing a fund transfer, querying an active account ledger, or freezing a compromised credit card—the Action Engine enforces strict schema validation and incorporates secure, token-based authentication protocols (e.g., OAuth 2.0). The LLM formulates the intent, but the Action Engine guarantees that the execution against the financial institution's gRPC or REST microservices adheres to immutable, pre-programmed security contracts.
+            </p>
+
+            <h4 class="sub-section-title">Healthcare Technology and Patient Management</h4>
+            
+            <p class="text-paragraph">
+                The healthcare domain is burdened by immense administrative friction, characterized by fragmented Electronic Health Records (EHR), complex medical ontologies, and convoluted insurance adjudication processes. Furthermore, any technological integration must strictly adhere to data privacy legislations, such as the Health Insurance Portability and Accountability Act (HIPAA).
+            </p>
+
+            <p class="text-paragraph">
+                Within this vertical, IntgraServeAI functions as an intelligent administrative orchestrator. The RAG pipeline is utilized to parse dense, jargon-heavy insurance policies and medical coverage documentation, translating complex clauses into accessible natural language for patients. Concurrently, the Action Engine interfaces with clinic scheduling APIs and EHR databases. This allows the agent to autonomously execute workflows such as cross-referencing a physician's availability matrix to schedule an appointment, initiating prescription refill requests, and executing preliminary insurance eligibility verifications—dramatically reducing the administrative load on human medical staff.
+            </p>
+
+        </div>
+        <page-footer page="24"></page-footer>
+    </div>
+</body>
+</html>
