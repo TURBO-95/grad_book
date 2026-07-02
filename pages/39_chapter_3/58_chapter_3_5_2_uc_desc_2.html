@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Chapter 3.5.2 — Use Case Descriptions (Part 2)</title>
+    <style>
+        :root { --primary: #1a365d; --gold: #c6a254; --text-dark: #2d3748; --text-muted: #718096; --surface: #f8fafc; --border: #e2e8f0; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; color: var(--text-dark); font-size: 10.5pt; line-height: 1.6; }
+
+        .page-body { width: 100%; height: 100vh; padding: 42px 52px; display: flex; flex-direction: column; overflow: hidden; page-break-after: always; }
+        .content-wrapper { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
+        
+        .page-sub-header { margin-bottom: 24px; flex-shrink: 0; }
+        .sub-header-title { font-size: 16pt; color: var(--primary); font-weight: 700; margin-bottom: 8px; visibility: hidden; }
+        .sub-header-divider { height: 2px; width: 150px; background: var(--gold); border-radius: 2px; }
+
+        .bullet-item { display: flex; align-items: baseline; margin-bottom: 22px; }
+        .bullet-icon { color: var(--gold); font-size: 10pt; margin-right: 14px; flex-shrink: 0; }
+        .bullet-content { text-align: justify; color: var(--text-dark); line-height: 1.6; }
+        .bullet-title { color: var(--primary); font-weight: 700; margin-right: 6px; }
+
+        .highlight-box {
+            background-color: var(--surface);
+            border-left: 4px solid var(--gold);
+            padding: 16px 20px;
+            margin-bottom: 24px;
+            border-radius: 0 8px 8px 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        .highlight-title { display: block; color: var(--primary); font-size: 12pt; margin-bottom: 6px; }
+        .highlight-content { display: block; color: var(--text-dark); text-align: justify; line-height: 1.5; font-size: 10pt; }
+
+        .page-footer { margin-top: auto; text-align: center; padding-top: 18px; flex-shrink: 0; }
+        .page-number { font-size: 11pt; font-weight: bold; color: var(--text-muted); }
+    </style>
+</head>
+<body>
+    <div class="page-body pdf-flex-page">
+        <!-- Visual continuity -->
+        <page-sub-header title=""></page-sub-header>
+
+        <div class="content-wrapper">
+            <bullet-item 
+                title="UC-04: Ticket Reassignment & SLA Update." 
+                content="Actor: Support User / Tech User. A human agent reviews an escalated ticket and determines it belongs to a different department. They initiate a transfer, prompting the system to clear the current assignee, log the transfer history, recalculate the SLA due date based on the new department's queue priority, and update the ticket status back to 'Open'.">
+            </bullet-item>
+
+            <bullet-item 
+                title="UC-05: System Audit & Rollback." 
+                content="Actor: System Administrator. Following a configuration error, the admin accesses the Audit Logs. They review the changed JSON payloads recorded by the database triggers and initiate a system rollback, restoring the `agent_config.json` parameters from the localized, automated file backups.">
+            </bullet-item>
+
+            <highlight-box 
+                title="Comprehensive Use Case Specifications" 
+                content="Due to the extensive technical detail required to fully document all alternative flows, exception handling, and preconditions for the IntgraServeAI system, the complete and exhaustive Use Case Specifications have been modularized. Please refer to Appendix A: Use Case Specifications at the end of this document for the full, detailed breakdowns of every system interaction.">
+            </highlight-box>
+        </div>
+
+        <page-footer page="49"></page-footer>
+    </div>
+</body>
+</html>

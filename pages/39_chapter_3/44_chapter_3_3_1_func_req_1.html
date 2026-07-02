@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Chapter 3.3.1 — Functional Requirements (Part 1)</title>
+    <style>
+        :root {
+            --primary: #1a365d;
+            --gold: #c6a254;
+            --text-dark: #2d3748;
+            --text-muted: #718096;
+            --surface: #f8fafc;
+            --border: #e2e8f0;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            color: var(--text-dark);
+            background: #ffffff;
+            font-size: 10.5pt;
+            line-height: 1.6;
+        }
+
+        .page-body { width: 100%; height: 100vh; padding: 42px 52px; display: flex; flex-direction: column; overflow: hidden; page-break-after: always; }
+        .content-wrapper { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
+        .text-paragraph { text-align: justify; margin-bottom: 24px; text-indent: 30px; }
+
+        /* Component Styles */
+        .page-sub-header { margin-bottom: 24px; flex-shrink: 0; }
+        .sub-header-title { font-size: 20pt; color: var(--primary); font-weight: 800; margin-bottom: 8px; }
+        .sub-header-divider { height: 2px; width: 200px; background: var(--gold); border-radius: 2px; }
+
+        /* Bullet Item Styles */
+        .bullet-item { display: flex; align-items: baseline; margin-bottom: 20px; }
+        .bullet-icon { color: var(--gold); font-size: 10pt; margin-right: 14px; flex-shrink: 0; }
+        .bullet-content { text-align: justify; color: var(--text-dark); line-height: 1.6; }
+        .bullet-title { color: var(--primary); font-weight: 700; margin-right: 6px; }
+
+        .page-footer { margin-top: auto; text-align: center; padding-top: 18px; flex-shrink: 0; }
+        .page-number { font-size: 11pt; font-weight: bold; color: var(--text-muted); }
+    </style>
+</head>
+<body>
+    <div class="page-body pdf-flex-page">
+        <page-sub-header title="3.3 System Requirements"></page-sub-header>
+
+        <div class="content-wrapper">
+            <p class="text-paragraph">
+                The translation of IntgraServeAI's architectural philosophy into a working enterprise solution requires a stringent definition of its functional requirements. These requirements delineate the precise behaviors, data operations, and business rules that the system must inherently support to function as a secure, autonomous agent.
+            </p>
+
+            <h3 style="font-size: 14pt; color: var(--primary); font-weight: 700; margin-bottom: 16px;">3.3.1 Functional Requirements</h3>
+
+            <p class="text-paragraph" style="margin-bottom: 16px; text-indent: 0;">
+                <strong>A. Identity & Role-Based Access Control (RBAC) Subsystem</strong><br>
+                Given that IntgraServeAI connects directly to sensitive backend systems, granular authorization is paramount. The system must natively manage hierarchical user permissions.
+            </p>
+
+            <bullet-item 
+                title="User Profile Management:" 
+                content="The system shall maintain comprehensive user entities, tracking encrypted credentials, email confirmation statuses, active session flags, and timestamping login metadata to provide a full audit trail of human agent activity.">
+            </bullet-item>
+
+            <bullet-item 
+                title="Strict Role Separation:" 
+                content="The application must enforce distinct operational boundaries through predefined roles: Admin, Tech User, and Support User. Admins retain global configuration rights, while Tech and Support users are partitioned into specialized departmental queues to prevent data overlap.">
+            </bullet-item>
+
+            <bullet-item 
+                title="Cascading Association Models:" 
+                content="The backend shall implement a many-to-many relationship mapping between users and roles. In the event of an account purge or role demotion, the database must enforce automated CASCADE deletions to ensure no orphaned permissions or dangling security vulnerabilities remain within the system's core.">
+            </bullet-item>
+
+            <bullet-item 
+                title="Audit Trail Logging:" 
+                content="Every administrative action, such as altering permissions or modifying global system configurations, must trigger an immutable log entry documenting the user, the target table, and the exact JSON payload of changed values.">
+            </bullet-item>
+        </div>
+
+        <page-footer page="35"></page-footer>
+    </div>
+</body>
+</html>

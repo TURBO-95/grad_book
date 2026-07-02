@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Chapter 3.3.3 — Design Objectives</title>
+    <style>
+        :root { --primary: #1a365d; --gold: #c6a254; --text-dark: #2d3748; --text-muted: #718096; --surface: #f8fafc; --border: #e2e8f0; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; color: var(--text-dark); font-size: 10.5pt; line-height: 1.6; }
+
+        .page-body { width: 100%; height: 100vh; padding: 42px 52px; display: flex; flex-direction: column; overflow: hidden; page-break-after: always; }
+        .content-wrapper { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
+        
+        .page-sub-header { margin-bottom: 24px; flex-shrink: 0; }
+        .sub-header-title { font-size: 20pt; color: var(--primary); font-weight: 800; margin-bottom: 8px; }
+        .sub-header-divider { height: 2px; width: 200px; background: var(--gold); border-radius: 2px; }
+
+        .text-paragraph { text-align: justify; margin-bottom: 24px; text-indent: 30px; }
+
+        /* Highlight Box Component Styles */
+        .highlight-box {
+            background-color: var(--surface);
+            border-left: 4px solid var(--gold);
+            padding: 16px 20px;
+            margin-bottom: 24px;
+            border-radius: 0 8px 8px 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        .highlight-title { display: block; color: var(--primary); font-size: 12pt; margin-bottom: 6px; }
+        .highlight-content { display: block; color: var(--text-dark); text-align: justify; line-height: 1.5; font-size: 10pt; }
+
+        .page-footer { margin-top: auto; text-align: center; padding-top: 18px; flex-shrink: 0; }
+        .page-number { font-size: 11pt; font-weight: bold; color: var(--text-muted); }
+    </style>
+</head>
+<body>
+    <div class="page-body pdf-flex-page">
+        <page-sub-header title="3.3.3 Design Objectives"></page-sub-header>
+
+        <div class="content-wrapper">
+            <p class="text-paragraph">
+                The functional and non-functional requirements culminate into a set of overarching design objectives. These objectives acted as the guiding principles during the architectural planning of IntgraServeAI, prioritizing safety, agility, and decoupled engineering.
+            </p>
+
+            <highlight-box 
+                title="Universal Protocol Agnosticism" 
+                content="The system must abstract away the complexities of different networking protocols. Whether an external enterprise system utilizes traditional RESTful JSON APIs, heavily structured XML endpoints, or highly optimized gRPC binary streams, the internal Action Engine must interact with them uniformly.">
+            </highlight-box>
+
+            <highlight-box 
+                title="Human-in-the-Loop Validation" 
+                content="Total automation poses a severe liability when dealing with destructive actions (e.g., deleting a user account, initiating a refund). A core design objective is the implementation of a cooperative 'pause-and-resume' execution pattern, allowing the AI to halt its stream, prompt an authorized human agent for cryptographic approval, and then seamlessly resume execution post-validation.">
+            </highlight-box>
+
+            <highlight-box 
+                title="Decoupled Persistence & Execution Layers" 
+                content="The architecture must separate the API routing interfaces, business data persistence (PostgreSQL/SQLite), and the AI execution kernel. By enforcing strict Service-Repository patterns, the system ensures that altering the database schema does not require rebuilding the AI reasoning logic, ensuring long-term maintainability.">
+            </highlight-box>
+        </div>
+
+        <page-footer page="40"></page-footer>
+    </div>
+</body>
+</html>

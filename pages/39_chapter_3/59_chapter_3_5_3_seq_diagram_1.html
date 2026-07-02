@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Chapter 3.5.3 — Sequence Diagrams (Part 1)</title>
+    <style>
+        :root { --primary: #1a365d; --gold: #c6a254; --text-dark: #2d3748; --text-muted: #718096; --surface: #f8fafc; --border: #e2e8f0; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; color: var(--text-dark); font-size: 10.5pt; line-height: 1.6; }
+
+        .page-body { width: 100%; height: 100vh; padding: 42px 52px; display: flex; flex-direction: column; overflow: hidden; page-break-after: always; }
+        
+        .page-sub-header { margin-bottom: 20px; flex-shrink: 0; }
+        .sub-header-title { font-size: 16pt; color: var(--primary); font-weight: 700; margin-bottom: 8px; }
+        .sub-header-divider { height: 2px; width: 150px; background: var(--gold); border-radius: 2px; }
+
+        .content-wrapper { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
+        .text-paragraph { text-align: justify; margin-bottom: 12px; text-indent: 30px; flex-shrink: 0; }
+
+        /* Figure Block CSS for Auto-Scaling */
+        .figure-block { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 0; margin: 5px 0; overflow: hidden; }
+        .figure-img { max-width: 100%; max-height: calc(100% - 25px); object-fit: contain; border: 1px solid var(--border); border-radius: 6px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+        .figure-block p { margin-top: 8px; font-size: 9.5pt; color: var(--text-muted); font-style: italic; text-align: center; flex-shrink: 0; }
+
+        .page-footer { margin-top: auto; text-align: center; padding-top: 18px; flex-shrink: 0; }
+        .page-number { font-size: 11pt; font-weight: bold; color: var(--text-muted); }
+    </style>
+</head>
+<body>
+    <div class="page-body pdf-flex-page">
+        <page-sub-header title="3.5.3 Sequence Diagrams"></page-sub-header>
+
+        <div class="content-wrapper">
+            <p class="text-paragraph">
+                While Use Cases define <em>what</em> the system does, Sequence Diagrams detail <em>how</em> the internal components interact over time to fulfill those use cases. The diagram below illustrates the core interaction loop: the initialization of a WebSocket connection, the retrieval of historical context, and the non-blocking token streaming from the Language Model back to the client.
+            </p>
+
+            <figure-block 
+                src="../../assets/C-01_WebSocket_Chat_Session.png" 
+                alt="WebSocket Chat Session Initialization and Streaming" 
+                label="Figure 3.6: Component Interactions During a Standard WebSocket Chat Session">
+            </figure-block>
+        </div>
+
+        <page-footer page="50"></page-footer>
+    </div>
+</body>
+</html>

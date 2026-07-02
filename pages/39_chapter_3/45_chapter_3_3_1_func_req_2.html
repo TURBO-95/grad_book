@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Chapter 3.3.1 — Functional Requirements (Part 2)</title>
+    <style>
+        :root { --primary: #1a365d; --gold: #c6a254; --text-dark: #2d3748; --text-muted: #718096; --surface: #f8fafc; --border: #e2e8f0; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; color: var(--text-dark); font-size: 10.5pt; line-height: 1.6; }
+
+        .page-body { width: 100%; height: 100vh; padding: 42px 52px; display: flex; flex-direction: column; overflow: hidden; page-break-after: always; }
+        .content-wrapper { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
+        
+        .page-sub-header { margin-bottom: 20px; flex-shrink: 0; }
+        .sub-header-title { font-size: 20pt; color: var(--primary); font-weight: 800; margin-bottom: 8px; visibility: hidden; } /* Hidden for continuity but keeps spacing */
+        .sub-header-divider { height: 2px; width: 200px; background: var(--gold); border-radius: 2px; }
+
+        .bullet-item { display: flex; align-items: baseline; margin-bottom: 22px; }
+        .bullet-icon { color: var(--gold); font-size: 10pt; margin-right: 14px; flex-shrink: 0; }
+        .bullet-content { text-align: justify; color: var(--text-dark); line-height: 1.6; }
+        .bullet-title { color: var(--primary); font-weight: 700; margin-right: 6px; }
+
+        .page-footer { margin-top: auto; text-align: center; padding-top: 18px; flex-shrink: 0; }
+        .page-number { font-size: 11pt; font-weight: bold; color: var(--text-muted); }
+    </style>
+</head>
+<body>
+    <div class="page-body pdf-flex-page">
+
+        <page-sub-header title=""></page-sub-header>
+
+        <div class="content-wrapper">
+            <p class="text-paragraph" style="margin-bottom: 16px; text-indent: 0;">
+                <strong>B. Ticket Lifecycle Management</strong><br>
+                As an automated support orchestrator, IntgraServeAI must manage the complete lifecycle of customer inquiries, dynamically routing them when AI resolution fails.
+            </p>
+
+            <bullet-item 
+                title="Dynamic SLA Calculation:" 
+                content="The system must autonomously calculate Service Level Agreement (SLA) due dates upon ticket creation based on severity parameters (e.g., Low = +72h, Urgent = +4h). This ensures human agents are prioritized based on contractual compliance limits.">
+            </bullet-item>
+
+            <bullet-item 
+                title="Cross-Departmental Transitions:" 
+                content="When a ticket escalates between departments (e.g., Support to Tech), the system must execute a seamless reassignment logic. It must clear the active assignee, log the previous owner for historical continuity, toggle the ticket's foundational category, and reset its status to an open queue format.">
+            </bullet-item>
+
+            <p class="text-paragraph" style="margin-bottom: 16px; margin-top: 10px; text-indent: 0;">
+                <strong>C. Conversational AI Subsystem</strong><br>
+                The core interaction layer must support complex, non-linear human conversations while maintaining strict deterministic state tracking.
+            </p>
+
+            <bullet-item 
+                title="Persistent Session State Management:" 
+                content="The application shall manage live WebSocket sessions. Because large language models are inherently stateless, the backend must serialize all conversation histories, transient AI contexts, and pending tool execution states directly into the database to allow seamless session re-connections if a user drops offline.">
+            </bullet-item>
+
+            <bullet-item 
+                title="Context Rewinding & Editing:" 
+                content="If a user modifies a previously sent message, the system must perform a cascade deletion of all subsequent generated messages. It will then resubmit the edited query to the LLM, effectively branching the conversation and ensuring the model's contextual window remains historically consistent without hallucinating past intents.">
+            </bullet-item>
+
+            <bullet-item 
+                title="Intent & Extraction Tracking:" 
+                content="Beyond raw text logging, the system must parse and store metadata from the AI engine, capturing identified intents, extracted entities (like Order IDs or Emails), and confidence scores to power analytical dashboards.">
+            </bullet-item>
+        </div>
+
+        <page-footer page="36"></page-footer>
+    </div>
+</body>
+</html>

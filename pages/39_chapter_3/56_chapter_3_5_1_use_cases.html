@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Chapter 3.5.1 — Use Case Diagrams</title>
+    <style>
+        :root { --primary: #1a365d; --gold: #c6a254; --text-dark: #2d3748; --text-muted: #718096; --surface: #f8fafc; --border: #e2e8f0; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; color: var(--text-dark); font-size: 10.5pt; line-height: 1.6; }
+
+        .page-body { width: 100%; height: 100vh; padding: 42px 52px; display: flex; flex-direction: column; overflow: hidden; page-break-after: always; }
+        .content-wrapper { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
+        
+        .page-sub-header { margin-bottom: 20px; flex-shrink: 0; }
+        .sub-header-title { font-size: 16pt; color: var(--primary); font-weight: 700; margin-bottom: 8px; }
+        .sub-header-divider { height: 2px; width: 150px; background: var(--gold); border-radius: 2px; }
+
+        .text-paragraph { text-align: justify; margin-bottom: 16px; text-indent: 30px; flex-shrink: 0; }
+
+        .figure-block { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 0; margin: 10px 0; overflow: hidden; }
+        .figure-img { max-width: 100%; max-height: calc(100% - 30px); object-fit: contain; border: 1px solid var(--border); border-radius: 6px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+        .figure-block p { margin-top: 10px; font-size: 9.5pt; color: var(--text-muted); font-style: italic; text-align: center; flex-shrink: 0; }
+
+        .page-footer { margin-top: auto; text-align: center; padding-top: 18px; flex-shrink: 0; }
+        .page-number { font-size: 11pt; font-weight: bold; color: var(--text-muted); }
+    </style>
+</head>
+<body>
+    <div class="page-body pdf-flex-page">
+        <page-sub-header title="3.5.1 Use Case Diagrams"></page-sub-header>
+
+        <div class="content-wrapper">
+            <p class="text-paragraph">
+                Use Case diagrams serve as the foundational blueprint for identifying system actors and mapping their permissible interactions. In IntgraServeAI, the architectural boundaries are strictly defined by the Role-Based Access Control (RBAC) subsystem. The diagram below illustrates the hierarchical delegation of responsibilities across the primary administrative and operational domains.
+            </p>
+
+            <figure-block 
+                src="../../assets/U-01_User_Role_Management.png" 
+                alt="User Role Management and Interaction Boundaries" 
+                label="Figure 3.5: Actor Identification and System Interaction Boundaries">
+            </figure-block>
+
+            <p class="text-paragraph" style="margin-top: 16px; text-indent: 0;">
+                As depicted, the separation of concerns ensures that the <strong>System Administrator</strong> manages global engine configurations, while <strong>Support and Technical Users</strong> operate strictly within their designated ticket lifecycle domains. The <strong>End-Customer</strong> interacts solely through the AI WebSocket gateway, abstracting them completely from the backend complexity.
+            </p>
+        </div>
+
+        <page-footer page="47"></page-footer>
+    </div>
+</body>
+</html>

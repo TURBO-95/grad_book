@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Chapter 3.2 — Analysis of Existing Systems (Part 2)</title>
+    <style>
+        :root { --primary: #1a365d; --gold: #c6a254; --text-dark: #2d3748; --text-muted: #718096; --surface: #f8fafc; --border: #e2e8f0; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; color: var(--text-dark); font-size: 10.5pt; line-height: 1.6; }
+
+        .page-body { width: 100%; height: 100vh; padding: 42px 52px; display: flex; flex-direction: column; overflow: hidden; page-break-after: always; }
+        .content-wrapper { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
+
+        .page-sub-header { margin-bottom: 24px; flex-shrink: 0; }
+        .sub-header-title { font-size: 20pt; color: var(--primary); font-weight: 800; margin-bottom: 8px; }
+        .sub-header-divider { height: 2px; width: 200px; background: var(--gold); border-radius: 2px; }
+
+        /* Competitor Table Container & Header Styles */
+        .competitor-table-container { border: 1px solid var(--border); border-radius: 8px; overflow: hidden; background: #ffffff; margin-top: 10px; }
+        .competitor-header {
+            display: grid;
+            grid-template-columns: 22% 23% 25% 30%;
+            background: var(--surface);
+            border-bottom: 2px solid var(--border);
+            font-size: 9.5pt;
+            font-weight: 700;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .competitor-header > div { padding: 14px 18px; }
+
+        /* Competitor Row Component CSS */
+        .competitor-row { display: grid; grid-template-columns: 22% 23% 25% 30%; border-bottom: 1px solid var(--border); font-size: 9.5pt; align-items: stretch; }
+        .competitor-row:last-child { border-bottom: none; }
+        .comp-col-meta { padding: 16px 18px; display: flex; flex-direction: column; justify-content: center; }
+        .comp-category { font-weight: 700; color: var(--primary); margin-bottom: 6px; font-size: 10.5pt; }
+        .comp-players { font-size: 9pt; color: var(--text-muted); font-style: italic; }
+        .comp-col-text { padding: 16px 18px; display: flex; align-items: center; line-height: 1.5; }
+        .comp-diff { background: var(--surface); font-weight: 600; color: var(--primary); border-left: 1px solid var(--border); }
+
+        .page-footer { margin-top: auto; text-align: center; padding-top: 18px; flex-shrink: 0; }
+        .page-number { font-size: 11pt; font-weight: bold; color: var(--text-muted); }
+    </style>
+</head>
+<body>
+    <div class="page-body pdf-flex-page">
+        <page-sub-header title="3.2.1 Competitive Landscape"></page-sub-header>
+
+        <div class="content-wrapper">
+            <div class="competitor-table-container">
+                <!-- Table Header -->
+                <div class="competitor-header">
+                    <div>Category</div>
+                    <div>Strengths</div>
+                    <div>Weaknesses</div>
+                    <div>IntgraServeAI's Differentiator</div>
+                </div>
+
+                <!-- Enterprise Platforms -->
+                <competitor-row 
+                    category="Enterprise Platforms" 
+                    players="(e.g., Salesforce, Zendesk)" 
+                    strengths="Provides deep integration exclusively with their own ecosystem's data and pre-existing service pathways." 
+                    weaknesses="Exhibits a strict 'Walled Garden' approach; highly inflexible and poor at integrating with custom, external backend systems." 
+                    differentiator="Platform-Agnostic Engine: Architected for universal protocol integration (gRPC, REST), completely avoiding vendor lock-in.">
+                </competitor-row>
+
+                <!-- Conversational Platforms -->
+                <competitor-row 
+                    category="Conversational AI" 
+                    players="(e.g., Intercom, Ada)" 
+                    strengths="Features user-friendly, no-code tools for fast deployment, making it highly accessible for non-technical teams." 
+                    weaknesses="Possesses shallow action capabilities. They are strictly limited to simple, predefined conversational flows and decision trees." 
+                    differentiator="Deep & Complex Automation: Built to handle sophisticated, multi-step task executions utilizing LLM-driven autonomous reasoning.">
+                </competitor-row>
+            </div>
+            
+        </div>
+
+        <page-footer page="33"></page-footer>
+    </div>
+</body>
+</html>

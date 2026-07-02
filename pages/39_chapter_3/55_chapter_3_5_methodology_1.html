@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Chapter 3.5 — Development Methodology</title>
+    <style>
+        :root { --primary: #1a365d; --gold: #c6a254; --text-dark: #2d3748; --text-muted: #718096; --surface: #f8fafc; --border: #e2e8f0; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; color: var(--text-dark); font-size: 10.5pt; line-height: 1.6; }
+
+        .page-body { width: 100%; height: 100vh; padding: 42px 52px; display: flex; flex-direction: column; overflow: hidden; page-break-after: always; }
+        .content-wrapper { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
+        
+        .page-sub-header { margin-bottom: 24px; flex-shrink: 0; }
+        .sub-header-title { font-size: 20pt; color: var(--primary); font-weight: 800; margin-bottom: 8px; }
+        .sub-header-divider { height: 2px; width: 200px; background: var(--gold); border-radius: 2px; }
+
+        .text-paragraph { text-align: justify; margin-bottom: 24px; text-indent: 30px; }
+
+        .text-section { margin-bottom: 24px; }
+        .text-section-title { font-size: 13pt; color: var(--primary); font-weight: 700; margin-bottom: 10px; }
+        .text-section-content { text-align: justify; text-indent: 30px; line-height: 1.6; }
+
+        .page-footer { margin-top: auto; text-align: center; padding-top: 18px; flex-shrink: 0; }
+        .page-number { font-size: 11pt; font-weight: bold; color: var(--text-muted); }
+    </style>
+</head>
+<body>
+    <div class="page-body pdf-flex-page">
+        <page-sub-header title="3.5 Development Methodology"></page-sub-header>
+
+        <div class="content-wrapper">
+            <p class="text-paragraph">
+                The development of an AI-centric enterprise platform requires a departure from traditional Waterfall paradigms. Because Large Language Models introduce non-deterministic behaviors, the engineering process must rapidly adapt to unexpected hallucinations, latency spikes, and complex state-management edge cases. Consequently, IntgraServeAI was developed using an Agile, highly iterative methodology.
+            </p>
+
+            <text-section 
+                title="Iterative AI Engineering" 
+                content="The project lifecycle was broken down into two-week development sprints. Early sprints focused exclusively on establishing the deterministic boundaries of the system—such as the API routing layer, the PostgreSQL database schemas, and the WebSocket connection handlers. Once the deterministic foundation was stabilized, the focus shifted to integrating the LangChain execution kernel, allowing the team to test AI responses against a stable backend API.">
+            </text-section>
+
+            <text-section 
+                title="Continuous Integration and MLOps" 
+                content="To ensure that modifications to the prompt engineering or tool schemas did not break existing functionality, the team utilized automated testing pipelines via GitHub Actions. Every commit triggered a suite of unit tests evaluating the deterministic Service Layer, while specialized integration tests validated the AI's ability to successfully extract parameters and formulate valid JSON request payloads for mock API endpoints.">
+            </text-section>
+
+            <text-section 
+                title="The Pause-and-Resume Focus" 
+                content="A significant portion of the development effort was dedicated to perfecting the 'Human-in-the-Loop' workflow. Iterative testing revealed that storing transient conversation states natively in memory was volatile; thus, the methodology evolved to enforce strict database serialization of the pending_state before yielding control back to the human agent for confirmation.">
+            </text-section>
+        </div>
+
+        <page-footer page="46"></page-footer>
+    </div>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Chapter 3.4.3 — Data Persistence Schema</title>
+    <style>
+        :root { --primary: #1a365d; --gold: #c6a254; --text-dark: #2d3748; --text-muted: #718096; --surface: #f8fafc; --border: #e2e8f0; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; color: var(--text-dark); font-size: 10.5pt; line-height: 1.6; }
+
+        .page-body { width: 100%; height: 100vh; padding: 42px 52px; display: flex; flex-direction: column; overflow: hidden; page-break-after: always; }
+        
+        .page-sub-header { margin-bottom: 20px; flex-shrink: 0; }
+        .sub-header-title { font-size: 16pt; color: var(--primary); font-weight: 700; margin-bottom: 8px; }
+        .sub-header-divider { height: 2px; width: 150px; background: var(--gold); border-radius: 2px; }
+
+        .content-wrapper { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
+        .text-paragraph { text-align: justify; margin-bottom: 16px; text-indent: 30px; flex-shrink: 0; }
+
+        /* Figure Block CSS - Custom adjusted padding for large ERD diagram */
+        .figure-block { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 0; margin: 5px 0; overflow: hidden; }
+        .figure-img { max-width: 100%; max-height: calc(100% - 25px); object-fit: contain; } /* Removed border for clean ERD presentation */
+        .figure-block p { margin-top: 8px; font-size: 9.5pt; color: var(--text-muted); font-style: italic; text-align: center; flex-shrink: 0; }
+
+        .page-footer { margin-top: auto; text-align: center; padding-top: 18px; flex-shrink: 0; }
+        .page-number { font-size: 11pt; font-weight: bold; color: var(--text-muted); }
+    </style>
+</head>
+<body>
+    <div class="page-body pdf-flex-page">
+        <page-sub-header title="3.4.3 Data Persistence & Schema Domain"></page-sub-header>
+
+        <div class="content-wrapper">
+            <p class="text-paragraph">
+                The persistence layer utilizes the SQLAlchemy 2.0 Async mapping system to handle database interactions securely. The Entity-Relationship schema enforces deep relational integrity, utilizing strict foreign key cascades across the Identity domain, the Ticket Lifecycle subsystem, and the Agent Execution Logs. Notably, it utilizes a hybrid JSON structure (`JSONVariant`) that degrades gracefully from PostgreSQL JSONB to standard JSON arrays on localized SQLite deployments.
+            </p>
+
+            <figure-block 
+                src="../../assets/D-01_Full_DB_ERD.png" 
+                alt="Entity-Relationship Diagram of the Persistence Layer" 
+                label="Figure 3.4: Complete Entity-Relationship Diagram of IntgraServeAI Domains">
+            </figure-block>
+        </div>
+
+        <page-footer page="45"></page-footer>
+    </div>
+</body>
+</html>
