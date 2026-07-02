@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Chapter 4.3 — Algorithms (Part 3)</title>
+    <style>
+        :root { --primary: #1a365d; --gold: #c6a254; --text-dark: #2d3748; --text-muted: #718096; --surface: #f8fafc; --border: #e2e8f0; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; color: var(--text-dark); font-size: 10.5pt; line-height: 1.6; }
+
+        .page-body { width: 100%; height: 100vh; padding: 42px 52px; display: flex; flex-direction: column; overflow: hidden; page-break-after: always; }
+        .content-wrapper { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
+        
+        .page-sub-header { margin-bottom: 12px; flex-shrink: 0; }
+        .sub-header-title { font-size: 20pt; color: var(--primary); font-weight: 800; margin-bottom: 8px; visibility: hidden; }
+        .sub-header-divider { height: 2px; width: 200px; background: var(--gold); border-radius: 2px; }
+
+        /* Code Block Styles */
+        .code-block { background: var(--surface); border: 1px solid var(--border); border-left: 4px solid var(--primary); border-radius: 4px; padding: 12px 16px; margin-bottom: 20px; overflow-x: auto; }
+        .code-block pre { margin: 0; font-family: 'Consolas', 'Courier New', monospace; font-size: 9pt; color: var(--primary); line-height: 1.4; }
+
+        .text-section { margin-bottom: 16px; }
+        .text-section-title { font-size: 13pt; color: var(--primary); font-weight: 700; margin-bottom: 8px; }
+        .text-section-content { text-align: justify; text-indent: 30px; line-height: 1.6; }
+
+        .page-footer { margin-top: auto; text-align: center; padding-top: 18px; flex-shrink: 0; }
+        .page-number { font-size: 11pt; font-weight: bold; color: var(--text-muted); }
+    </style>
+</head>
+<body>
+    <div class="page-body pdf-flex-page">
+        <!-- Visual continuity -->
+        <page-sub-header title=""></page-sub-header>
+
+        <div class="content-wrapper">
+            <text-section 
+                title="Dynamic gRPC Compilation Algorithm" 
+                content="One of the most highly technical capabilities of the Action Engine is the dynamic runtime parsing of Protocol Buffers (`.proto` files). Typically, gRPC requires developers to pre-compile stubs during the build process. To allow administrators to add new gRPC tools dynamically, IntgraServeAI executes a runtime compilation algorithm.">
+            </text-section>
+
+            <text-section 
+                title="" 
+                content="When an RPC action is invoked, the engine checks its `_grpc_module_cache`. On a cache miss, it invokes `grpc_tools.protoc` internally to generate the Python stubs within a secure temporary directory. It then utilizes Python's Abstract Syntax Tree (AST) reflection and the `importlib` module to inject the newly compiled stubs directly into the active application namespace.">
+            </text-section>
+
+            <code-block content="# Runtime injection of dynamically compiled protobuf stubs
+sys.path.insert(0, out_dir)
+
+try:
+    pb2 = importlib.import_module(pb2_name)
+    pb2_grpc = importlib.import_module(pb2_grpc_name)
+    
+    # Resolve the requested service stub via reflection
+    stub_class = getattr(pb2_grpc, service_stub_name)
+    
+finally:
+    # Safely remove the temp directory from the system path
+    sys.path.pop(0)"></code-block>
+
+            <text-section 
+                title="" 
+                content="This algorithmic approach effectively converts a statically-typed RPC framework into a dynamically discovered protocol, granting the AI immediate execution capabilities over newly registered backend microservices without necessitating a full application redeployment.">
+            </text-section>
+        </div>
+
+        <page-footer page="65"></page-footer>
+    </div>
+</body>
+</html>

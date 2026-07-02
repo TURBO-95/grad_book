@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Chapter 4.3 — Algorithms (Part 2)</title>
+    <style>
+        :root { --primary: #1a365d; --gold: #c6a254; --text-dark: #2d3748; --text-muted: #718096; --surface: #f8fafc; --border: #e2e8f0; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; color: var(--text-dark); font-size: 10.5pt; line-height: 1.6; }
+
+        .page-body { width: 100%; height: 100vh; padding: 42px 52px; display: flex; flex-direction: column; overflow: hidden; page-break-after: always; }
+        .content-wrapper { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
+        
+        .page-sub-header { margin-bottom: 12px; flex-shrink: 0; }
+        .sub-header-title { font-size: 20pt; color: var(--primary); font-weight: 800; margin-bottom: 8px; visibility: hidden; }
+        .sub-header-divider { height: 2px; width: 200px; background: var(--gold); border-radius: 2px; }
+
+        .text-paragraph { text-align: justify; margin-bottom: 16px; text-indent: 30px; flex-shrink: 0; }
+
+        /* Code & Math Block Styles */
+        .code-block { background: var(--surface); border: 1px solid var(--border); border-left: 4px solid var(--primary); border-radius: 4px; padding: 12px 16px; margin-bottom: 20px; overflow-x: auto; }
+        .code-block pre { margin: 0; font-family: 'Consolas', 'Courier New', monospace; font-size: 9pt; color: var(--primary); line-height: 1.4; }
+        .math-block { text-align: center; border-left: 4px solid var(--gold); padding: 8px 0; }
+
+        .text-section { margin-bottom: 16px; }
+        .text-section-title { font-size: 13pt; color: var(--primary); font-weight: 700; margin-bottom: 8px; }
+        .text-section-content { text-align: justify; text-indent: 30px; line-height: 1.6; }
+
+        .page-footer { margin-top: auto; text-align: center; padding-top: 18px; flex-shrink: 0; }
+        .page-number { font-size: 11pt; font-weight: bold; color: var(--text-muted); }
+    </style>
+</head>
+<body>
+    <div class="page-body pdf-flex-page">
+        <!-- Visual continuity -->
+        <page-sub-header title=""></page-sub-header>
+
+        <div class="content-wrapper">
+            <text-section 
+                title="Vector Search & Similarity Algorithms" 
+                content="To ground the AI's responses in factual enterprise knowledge, the system implements a Registry Pattern to route vector searches based on the active database driver. In production PostgreSQL environments, the algorithm executes similarity searches using the `pgvector` cosine distance operator.">
+            </text-section>
+
+            <math-block>$$ \text{distance}(A, B) = 1 - \frac{\sum_{i=1}^{n} A_i B_i}{\sqrt{\sum_{i=1}^{n} A_i^2} \sqrt{\sum_{i=1}^{n} B_i^2}} $$</math-block>
+
+            <code-block content="SELECT * 
+FROM {collection_name} 
+ORDER BY embedding <=> %s::vector 
+LIMIT %s"></code-block>
+
+            <text-section 
+                title="Binary Float Packing for Edge Environments" 
+                content="For localized or edge-deployment environments running SQLite, the system dynamically swaps the algorithm to utilize the compiled `sqlite-vec` C-extensions. Because SQLite lacks native high-dimensional array support, the driver algorithm packs the raw float arrays into contiguous binary blocks using Python's struct module before executing the MATCH operation.">
+            </text-section>
+
+            <code-block content="SELECT *
+FROM {collection_name}
+WHERE embedding MATCH ?
+ORDER BY distance
+LIMIT ?"></code-block>
+        </div>
+
+        <page-footer page="64"></page-footer>
+    </div>
+</body>
+</html>

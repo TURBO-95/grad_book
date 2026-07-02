@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Chapter 4.3 — Algorithms (Part 1)</title>
+    <style>
+        :root { --primary: #1a365d; --gold: #c6a254; --text-dark: #2d3748; --text-muted: #718096; --surface: #f8fafc; --border: #e2e8f0; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; color: var(--text-dark); font-size: 10.5pt; line-height: 1.6; }
+
+        .page-body { width: 100%; height: 100vh; padding: 42px 52px; display: flex; flex-direction: column; overflow: hidden; page-break-after: always; }
+        .content-wrapper { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
+        
+        .page-sub-header { margin-bottom: 12px; flex-shrink: 0; }
+        .sub-header-title { font-size: 20pt; color: var(--primary); font-weight: 800; margin-bottom: 8px; visibility: hidden; }
+        .sub-header-divider { height: 2px; width: 200px; background: var(--gold); border-radius: 2px; }
+
+        .text-paragraph { text-align: justify; margin-bottom: 12px; text-indent: 30px; flex-shrink: 0; }
+
+        .figure-block { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 0; margin: 5px 0; overflow: hidden; }
+        .figure-img { max-width: 100%; max-height: calc(100% - 25px); object-fit: contain; border: 1px solid var(--border); border-radius: 6px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+        .figure-block p { margin-top: 8px; font-size: 9.5pt; color: var(--text-muted); font-style: italic; text-align: center; flex-shrink: 0; }
+
+        .page-footer { margin-top: auto; text-align: center; padding-top: 18px; flex-shrink: 0; }
+        .page-number { font-size: 11pt; font-weight: bold; color: var(--text-muted); }
+    </style>
+</head>
+<body>
+    <div class="page-body pdf-flex-page">
+        <!-- Visual continuity -->
+        <page-sub-header title=""></page-sub-header>
+
+        <div class="content-wrapper">
+            <p class="text-paragraph">
+                Transitioning from data storage to execution logic, the system utilizes highly structured state machine algorithms. The Ticket Status Lifecycle algorithm algorithmically prevents invalid status mutations—ensuring, for instance, that a ticket cannot transition directly from 'Closed' back to 'In Progress' without moving through an explicit 'Reopened' clearance phase by an authorized human administrator.
+            </p>
+
+            <figure-block 
+                src="../../assets/T-02_Ticket_Status_Lifecycle.png" 
+                alt="Ticket Status State Machine Algorithm" 
+                label="Figure 4.7: Algorithmic state machine governing permissible Ticket Status transitions">
+            </figure-block>
+        </div>
+
+        <page-footer page="63"></page-footer>
+    </div>
+</body>
+</html>
