@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Chapter 6.2 — Future Work (Part 3)</title>
+    <style>
+        :root { --primary: #1a365d; --gold: #c6a254; --text-dark: #2d3748; --text-muted: #718096; --surface: #f8fafc; --border: #e2e8f0; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; color: var(--text-dark); font-size: 10.5pt; line-height: 1.6; }
+
+        .page-body { width: 100%; height: 100vh; padding: 42px 52px; display: flex; flex-direction: column; overflow: hidden; page-break-after: always; }
+        .content-wrapper { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
+        
+        .page-sub-header { margin-bottom: 24px; flex-shrink: 0; }
+        .sub-header-title { font-size: 20pt; color: var(--primary); font-weight: 800; margin-bottom: 8px; visibility: hidden; }
+        .sub-header-divider { height: 2px; width: 200px; background: var(--gold); border-radius: 2px; }
+
+        .bullet-item { display: flex; align-items: baseline; margin-bottom: 24px; }
+        .bullet-icon { color: var(--gold); font-size: 10pt; margin-right: 14px; flex-shrink: 0; }
+        .bullet-content { text-align: justify; color: var(--text-dark); line-height: 1.6; }
+        .bullet-title { color: var(--primary); font-weight: 700; margin-right: 6px; }
+
+        .text-section { margin-top: 10px; margin-bottom: 24px; }
+        .text-section-title { font-size: 13pt; color: var(--primary); font-weight: 700; margin-bottom: 10px; }
+        .text-section-content { text-align: justify; text-indent: 30px; line-height: 1.6; }
+
+        .page-footer { margin-top: auto; text-align: center; padding-top: 18px; flex-shrink: 0; }
+        .page-number { font-size: 11pt; font-weight: bold; color: var(--text-muted); }
+    </style>
+</head>
+<body>
+    <div class="page-body pdf-flex-page">
+        <!-- Visual continuity -->
+        <page-sub-header title=""></page-sub-header>
+
+        <div class="content-wrapper">
+            <p class="text-paragraph" style="margin-bottom: 16px; font-weight: bold; font-size: 12pt; color: var(--primary); text-indent: 0;">
+                3. User Experience and Research Enhancements
+            </p>
+
+            <bullet-item 
+                title="Voice & Multimodal Interfaces:" 
+                content="Integrating WebRTC audio streaming directly into the connection gateway to transition the system from a text-based chat environment into a real-time, voice-assisted autonomous platform capable of processing visual documents and charts dynamically.">
+            </bullet-item>
+
+            <bullet-item 
+                title="Open-Source Community Contributions:" 
+                content="Isolating the declarative Action Engine and the dynamic gRPC compilation runtime from the proprietary database schemas to release them as an open-source Python library, fostering community-driven tool definitions.">
+            </bullet-item>
+
+            <text-section 
+                title="Final Remarks" 
+                content="The journey of engineering IntgraServeAI proves that the future of enterprise software is not found in writing harder, more rigid code, but rather in designing flexible, secure systems capable of reasoning through integration problems autonomously. We stand at the precipice of a massive shift in how organizations interact with digital infrastructure, and this project serves as a foundational blueprint for that rapidly approaching reality.">
+            </text-section>
+        </div>
+
+        <page-footer page="92"></page-footer>
+    </div>
+</body>
+</html>

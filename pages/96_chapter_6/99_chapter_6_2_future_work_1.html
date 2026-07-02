@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Chapter 6.2 — Future Work (Part 1)</title>
+    <style>
+        :root { --primary: #1a365d; --gold: #c6a254; --text-dark: #2d3748; --text-muted: #718096; --surface: #f8fafc; --border: #e2e8f0; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; color: var(--text-dark); font-size: 10.5pt; line-height: 1.6; }
+
+        .page-body { width: 100%; height: 100vh; padding: 42px 52px; display: flex; flex-direction: column; overflow: hidden; page-break-after: always; }
+        .content-wrapper { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
+        
+        .page-sub-header { margin-bottom: 24px; flex-shrink: 0; }
+        .sub-header-title { font-size: 20pt; color: var(--primary); font-weight: 800; margin-bottom: 8px; }
+        .sub-header-divider { height: 2px; width: 200px; background: var(--gold); border-radius: 2px; }
+
+        .text-paragraph { text-align: justify; margin-bottom: 24px; text-indent: 30px; }
+
+        .bullet-item { display: flex; align-items: baseline; margin-bottom: 24px; }
+        .bullet-icon { color: var(--gold); font-size: 10pt; margin-right: 14px; flex-shrink: 0; }
+        .bullet-content { text-align: justify; color: var(--text-dark); line-height: 1.6; }
+        .bullet-title { color: var(--primary); font-weight: 700; margin-right: 6px; }
+
+        .page-footer { margin-top: auto; text-align: center; padding-top: 18px; flex-shrink: 0; }
+        .page-number { font-size: 11pt; font-weight: bold; color: var(--text-muted); }
+    </style>
+</head>
+<body>
+    <div class="page-body pdf-flex-page">
+        <page-sub-header title="6.2 Future Work"></page-sub-header>
+
+        <div class="content-wrapper">
+            <p class="text-paragraph">
+                While the current iteration of IntgraServeAI successfully demonstrates the viability of an autonomous orchestration layer, the rapid evolution of artificial intelligence opens numerous avenues for system expansion. Future research and development efforts should focus on evolving the reasoning kernel and enhancing scalability.
+            </p>
+
+            <p class="text-paragraph" style="margin-bottom: 16px; font-weight: bold; font-size: 12pt; color: var(--primary); text-indent: 0;">
+                1. Advanced AI Capabilities
+            </p>
+
+            <bullet-item 
+                title="Multi-Agent Orchestration:" 
+                content="Transitioning from a single, monolithic reasoning agent to a multi-agent system. For example, a specialized 'Router Agent' could intercept queries and distribute them to specialized sub-agents (e.g., a 'Database Agent' or an 'API Agent'), reducing token latency and improving complex task resolution.">
+            </bullet-item>
+
+            <bullet-item 
+                title="Proactive Task Execution:" 
+                content="Currently, the agent is reactive, executing tools only in response to a user's WebSocket message. Future work entails integrating a Kafka or RabbitMQ event bus, enabling the AI to proactively contact users or trigger workflows based on internal enterprise events (e.g., automatically notifying a user when a shipment is delayed).">
+            </bullet-item>
+
+            <bullet-item 
+                title="Advanced Semantic Routing:" 
+                content="Integrating lightweight classification models to evaluate user intent at the gateway layer before invoking heavier, more expensive generative models, drastically reducing API inference costs at scale.">
+            </bullet-item>
+        </div>
+
+        <page-footer page="90"></page-footer>
+    </div>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Chapter 6.2 — Future Work (Part 2)</title>
+    <style>
+        :root { --primary: #1a365d; --gold: #c6a254; --text-dark: #2d3748; --text-muted: #718096; --surface: #f8fafc; --border: #e2e8f0; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; color: var(--text-dark); font-size: 10.5pt; line-height: 1.6; }
+
+        .page-body { width: 100%; height: 100vh; padding: 42px 52px; display: flex; flex-direction: column; overflow: hidden; page-break-after: always; }
+        .content-wrapper { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
+        
+        .page-sub-header { margin-bottom: 24px; flex-shrink: 0; }
+        .sub-header-title { font-size: 20pt; color: var(--primary); font-weight: 800; margin-bottom: 8px; visibility: hidden; }
+        .sub-header-divider { height: 2px; width: 200px; background: var(--gold); border-radius: 2px; }
+
+        .text-paragraph { text-align: justify; margin-bottom: 24px; text-indent: 30px; }
+
+        .bullet-item { display: flex; align-items: baseline; margin-bottom: 24px; }
+        .bullet-icon { color: var(--gold); font-size: 10pt; margin-right: 14px; flex-shrink: 0; }
+        .bullet-content { text-align: justify; color: var(--text-dark); line-height: 1.6; }
+        .bullet-title { color: var(--primary); font-weight: 700; margin-right: 6px; }
+
+        .page-footer { margin-top: auto; text-align: center; padding-top: 18px; flex-shrink: 0; }
+        .page-number { font-size: 11pt; font-weight: bold; color: var(--text-muted); }
+    </style>
+</head>
+<body>
+    <div class="page-body pdf-flex-page">
+        <!-- Visual continuity -->
+        <page-sub-header title=""></page-sub-header>
+
+        <div class="content-wrapper">
+            <p class="text-paragraph" style="margin-bottom: 16px; font-weight: bold; font-size: 12pt; color: var(--primary); text-indent: 0;">
+                2. Enterprise Scalability and Integration
+            </p>
+
+            <p class="text-paragraph">
+                To further solidify the platform's viability in massive commercial deployments, engineering efforts must shift toward cloud-native resiliency and deeper systems integration.
+            </p>
+
+            <bullet-item 
+                title="Expanded Protocol Support:" 
+                content="Building upon the existing REST and gRPC compilers, future iterations will implement native GraphQL introspection to map nested queries, and integrate legacy SOAP/XML protocol translators to accommodate older healthcare and banking infrastructures.">
+            </bullet-item>
+
+            <bullet-item 
+                title="Kubernetes & Cloud-Native Scaling:" 
+                content="Migrating the application's deployment footprint from localized Docker Compose environments to fully orchestrated Kubernetes (K8s) Helm charts. This will enable dynamic pod auto-scaling based specifically on active WebSocket connection loads.">
+            </bullet-item>
+
+            <bullet-item 
+                title="Comprehensive Observability:" 
+                content="Upgrading the internal Correlation ID tracking system to natively integrate with OpenTelemetry. This will allow the platform to export distributed traces, logs, and token usage metrics directly into enterprise monitoring stacks like Datadog or Prometheus.">
+            </bullet-item>
+        </div>
+
+        <page-footer page="91"></page-footer>
+    </div>
+</body>
+</html>

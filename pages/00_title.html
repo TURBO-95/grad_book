@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Title Page - IntgraServeAI</title>
+    <style>
+        /* ── Design Tokens ────────────────────────────────────── */
+        :root {
+            --primary:   #1a365d;
+            --gold:      #c6a254;
+            --text-dark: #2d3748;
+            --text-muted:#718096;
+            --surface:   #f8fafc;
+            --border:    #e2e8f0;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            color: var(--text-dark);
+            background: #ffffff;
+        }
+
+        /* ── PDF Page Container ───────────────────────────────── */
+        .cover-page {
+            width: 100%;
+            height: 100vh;
+            padding: 32px 52px;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+            page-break-after: always;
+            border-left: 10px solid transparent; /* space for ::before bar */
+        }
+
+        .cover-page::before {
+            content: "";
+            position: absolute;
+            left: 0; top: 0; bottom: 0;
+            width: 10px;
+            background: linear-gradient(to bottom, #1a365d 0%, #4a5568 50%, #c6a254 100%);
+        }
+
+        /* ── Header ─────────────────────────────────────────────*/
+        .header-section {
+            text-align: center;
+            margin-bottom: 18px;
+        }
+
+        .uni-arabic {
+            font-size: 14pt;
+            font-weight: bold;
+            color: var(--primary);
+            margin-bottom: 4px;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .uni-english {
+            font-size: 11pt;
+            font-weight: bold;
+            color: var(--primary);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .dept-english {
+            font-size: 10pt;
+            color: var(--text-muted);
+            margin-top: 4px;
+            letter-spacing: 0.5px;
+        }
+
+        /* ── Badge ───────────────────────────────────────────── */
+        .badge-container {
+            display: flex;
+            justify-content: center;
+            margin-top: auto; /* Pushes the title block down to help center it */
+            margin-bottom: 14px;
+        }
+
+        .badge {
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            padding: 5px 18px;
+            border-radius: 20px;
+            font-size: 9pt;
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* ── Title Block ─────────────────────────────────────── */
+        .title-section {
+            text-align: center;
+            margin-bottom: 16px;
+        }
+
+        .project-title {
+            font-size: 44pt;
+            font-weight: 900;
+            color: var(--primary);
+            letter-spacing: -1px;
+            margin-bottom: 10px;
+            line-height: 1;
+        }
+
+        .project-title span { color: var(--gold); }
+
+        .project-subtitle {
+            font-size: 11pt;
+            color: var(--text-muted);
+            max-width: 560px;
+            margin: 0 auto;
+            line-height: 1.45;
+        }
+
+        /* ── Divider ─────────────────────────────────────────── */
+        .diamond-divider {
+            text-align: center;
+            color: var(--gold);
+            font-size: 13pt;
+            margin: 12px 0;
+        }
+
+        /* ── Info Grid ───────────────────────────────────────── */
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin-top: auto; /* Pushes grid to the bottom and perfectly centers the title block */
+        }
+
+        .card {
+            background: var(--surface);
+            border-radius: 10px;
+            padding: 20px 24px;
+            border: 1px solid var(--border);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column; /* Makes inner content align properly */
+        }
+
+        .card-title {
+            font-size: 9pt;
+            color: var(--gold);
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 14px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 8px;
+        }
+
+        /* ── Team Members ────────────────────────────────────── */
+        .team-list { 
+            list-style: none; 
+            padding: 0; /* Removes default ul indent to fix alignment */
+        }
+
+        /* Included both custom tag and class selector for flexibility */
+        team-member, .team-member-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 8px;
+            font-size: 10pt;
+        }
+
+        .team-member-name {
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .team-member-role {
+            color: var(--text-muted);
+            font-size: 9pt;
+        }
+
+        /* ── Supervisors ─────────────────────────────────────── */
+        .supervisor-list { 
+            list-style: none; 
+            margin-bottom: 18px; 
+            padding: 0; /* Removes default ul indent to fix alignment */
+        }
+
+        /* Included both custom tag and class selector for flexibility */
+        supervisor-item, .supervisor-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 14px;
+        }
+
+        .supervisor-avatar {
+            width: 36px;
+            height: 36px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 12px;
+            color: white;
+            flex-shrink: 0;
+        }
+
+        .supervisor-body .supervisor-name {
+            font-weight: bold;
+            font-size: 11pt;
+            color: var(--text-dark);
+        }
+
+        .supervisor-body .supervisor-role {
+            font-size: 9pt;
+            color: var(--text-muted);
+        }
+
+        .submission-text {
+            font-size: 9pt;
+            color: var(--text-muted);
+            line-height: 1.55;
+            border-top: 1px dashed #cbd5e0;
+            padding-top: 14px;
+            margin-top: auto; /* Sticks text to the bottom of the card smoothly */
+        }
+
+        /* ── Footer ──────────────────────────────────────────── */
+        .footer-section {
+            margin-top: 14px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            padding-top: 14px;
+            border-top: 1px solid var(--border);
+            flex-shrink: 0;
+        }
+
+        .academic-year {
+            font-size: 9pt;
+            color: var(--text-muted);
+        }
+
+        .academic-year strong {
+            display: block;
+            font-size: 14pt;
+            color: var(--primary);
+            margin-top: 3px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="cover-page pdf-page">
+
+        <!-- University Header -->
+        <div class="header-section">
+            <div class="uni-arabic">جامعة المنصورة - كلية الحاسبات والمعلومات</div>
+            <div class="uni-english">MANSOURA UNIVERSITY — FACULTY OF COMPUTERS AND INFORMATION</div>
+            <div class="dept-english">Computer Science Department</div>
+        </div>
+
+        <!-- Badge -->
+        <div class="badge-container">
+            <div class="badge">Graduation Project Book</div>
+        </div>
+
+        <!-- Project Title -->
+        <div class="title-section">
+            <div class="project-title">Intgra<span>Serve</span>AI</div>
+            <div class="project-subtitle">
+                A Next-Generation, LLM-Powered Action Engine for Intelligent&nbsp;Enterprise Customer Assistance.
+            </div>
+        </div>
+
+        <div class="diamond-divider">◆</div>
+
+        <!-- Info Grid: Team + Supervisors -->
+        <div class="info-grid">
+
+            <!-- Team Card -->
+            <div class="card">
+                <div class="card-title">Prepared By · The Team</div>
+                <ul class="team-list">
+                    <team-member name="Mahmoud Tariq" role="Team Lead"></team-member>
+                    <team-member name="Youssef Hany" role="Back-End Lead"></team-member>
+                    <team-member name="Mahmoud Abd El-Raouf" role="Back-End"></team-member>
+                    <team-member name="Youssef Tariq" role="Back-End"></team-member>
+                    <team-member name="Mahmoud Walid" role="Front-End Lead"></team-member>
+                    <team-member name="Ahmed El-Gaml" role="Front-End UI"></team-member>
+                    <team-member name="Youssef El-Sharkawy"       role="Front-End"></team-member>
+                    <team-member name="Youssef Shaheen"           role="AI Engine"></team-member>
+                    <team-member name="Fatma Hegazy"              role="AI Engine"></team-member>
+                    <team-member name="Mahmoud El-Kafrawy"        role="AI Engine"></team-member>
+                </ul>
+            </div>
+
+            <!-- Supervisors Card -->
+            <div class="card">
+                <div class="card-title">Supervised By</div>
+                <ul class="supervisor-list">
+                    <supervisor-item name="Prof. Ahmed Tolba"  role="Supervising Professor"></supervisor-item>
+                    <supervisor-item name="Eng. Mahmoud Abas" role="Teaching Assistant"></supervisor-item>
+                </ul>
+                <div class="submission-text">
+                    A project submitted in partial fulfilment of the requirements for the degree of
+                    <strong>Bachelor of Science in Computer Science</strong>.
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Footer -->
+        <div class="footer-section">
+            <div class="academic-year">
+                Academic Year
+                <strong>2025 — 2026</strong>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
