@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Chapter 5.1 — System Implementation Introduction (Part 1)</title>
+    <style>
+        :root { --primary: #1a365d; --gold: #c6a254; --text-dark: #2d3748; --text-muted: #718096; --surface: #f8fafc; --border: #e2e8f0; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; color: var(--text-dark); font-size: 10.5pt; line-height: 1.6; }
+
+        .page-body { width: 100%; height: 100vh; padding: 42px 52px; display: flex; flex-direction: column; overflow: hidden; page-break-after: always; }
+        .content-wrapper { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
+        
+        .page-sub-header { margin-bottom: 24px; flex-shrink: 0; }
+        .sub-header-title { font-size: 20pt; color: var(--primary); font-weight: 800; margin-bottom: 8px; }
+        .sub-header-divider { height: 2px; width: 200px; background: var(--gold); border-radius: 2px; }
+
+        .text-paragraph { text-align: justify; margin-bottom: 24px; text-indent: 30px; }
+
+        .bullet-item { display: flex; align-items: baseline; margin-bottom: 22px; }
+        .bullet-icon { color: var(--gold); font-size: 10pt; margin-right: 14px; flex-shrink: 0; }
+        .bullet-content { text-align: justify; color: var(--text-dark); line-height: 1.6; }
+        .bullet-title { color: var(--primary); font-weight: 700; margin-right: 6px; }
+
+        .page-footer { margin-top: auto; text-align: center; padding-top: 18px; flex-shrink: 0; }
+        .page-number { font-size: 11pt; font-weight: bold; color: var(--text-muted); }
+    </style>
+</head>
+<body>
+    <div class="page-body pdf-flex-page">
+        <page-sub-header title="5.1 Introduction"></page-sub-header>
+
+        <div class="content-wrapper">
+            <p class="text-paragraph">
+                The IntgraServeAI Backend is a state-of-the-art, AI-powered customer support orchestration system. It is designed to act as an intelligent intermediary between customers, human support representatives, and legacy enterprise backend systems such as databases, REST APIs, and internal gRPC services.
+            </p>
+            
+            <p class="text-paragraph" style="margin-bottom: 20px;">
+                Modern customer support systems often suffer from rigid workflows, high human agent overhead, or fragmented automation integrations. IntgraServeAI resolves these constraints by pairing a Large Language Model (LLM) architecture with a dynamic, declarative action engine, built upon a robust, asynchronous technology stack:
+            </p>
+
+            <bullet-item 
+                title="FastAPI Web Framework:" 
+                content="Selected as the routing core, leveraging advanced asynchronous capabilities to handle persistent WebSocket streaming and non-blocking I/O operations seamlessly.">
+            </bullet-item>
+
+            <bullet-item 
+                title="LangChain Orchestrator:" 
+                content="Provides the foundational structures for generative AI agents, encompassing tool bindings, context chunking, message state serialization, and asynchronous execution streaming.">
+            </bullet-item>
+
+            <bullet-item 
+                title="SQLAlchemy 2.0 & asyncpg:" 
+                content="Acts as the Object-Relational Mapper (ORM), running fully async database transactions to manage complex identity roles, audit logs, and dynamic ticket states.">
+            </bullet-item>
+
+            <bullet-item 
+                title="Pydantic v2:" 
+                content="Powers the dynamic data models and configurations, validating JSON schemas and constructing runtime type-checking objects for the Action Engine's parameter validation routines.">
+            </bullet-item>
+        </div>
+
+        <page-footer page="72"></page-footer>
+    </div>
+</body>
+</html>

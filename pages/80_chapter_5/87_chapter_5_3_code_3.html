@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Chapter 5.3 — Sample Application Code (Part 3)</title>
+    <style>
+        :root { --primary: #1a365d; --gold: #c6a254; --text-dark: #2d3748; --text-muted: #718096; --surface: #f8fafc; --border: #e2e8f0; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; color: var(--text-dark); font-size: 10.5pt; line-height: 1.6; }
+
+        .page-body { width: 100%; height: 100vh; padding: 42px 52px; display: flex; flex-direction: column; overflow: hidden; page-break-after: always; }
+        .content-wrapper { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
+        
+        .page-sub-header { margin-bottom: 24px; flex-shrink: 0; }
+        .sub-header-title { font-size: 20pt; color: var(--primary); font-weight: 800; margin-bottom: 8px; visibility: hidden; }
+        .sub-header-divider { height: 2px; width: 200px; background: var(--gold); border-radius: 2px; }
+
+        .text-paragraph { text-align: justify; margin-bottom: 12px; text-indent: 30px; }
+
+        .code-block pre { margin: 0; font-family: 'Consolas', 'Courier New', monospace; font-size: 8.5pt; color: var(--primary); line-height: 1.4; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word; }
+        code-block { display: block; background: var(--surface); border: 1px solid var(--border); border-left: 4px solid var(--primary); border-radius: 4px; padding: 16px; margin-bottom: 20px; box-shadow: inset 0 1px 3px rgba(0,0,0,0.02); }
+
+        .page-footer { margin-top: auto; text-align: center; padding-top: 18px; flex-shrink: 0; }
+        .page-number { font-size: 11pt; font-weight: bold; color: var(--text-muted); }
+    </style>
+</head>
+<body>
+    <div class="page-body pdf-flex-page">
+        <!-- Visual continuity -->
+        <page-sub-header title=""></page-sub-header>
+
+        <div class="content-wrapper">
+            <p class="text-paragraph" style="margin-bottom: 12px; font-weight: bold; font-size: 11.5pt; color: var(--primary); text-indent: 0;">
+                3. Non-Blocking Async WebSocket Chat Loop
+            </p>
+            <p class="text-paragraph" style="margin-bottom: 16px; text-indent: 0;">
+                Extracted from <code style="color: var(--gold);">apis/v1/chat.py</code>, this snippet orchestrates the FastAPI persistent connection. Crucially, it highlights how context-editing triggers a cascade deletion of database messages prior to re-launching the asynchronous generation task.
+            </p>
+
+            <code-block>
+@router.websocket("/ws")
+async def chat_websocket(websocket: WebSocket):
+    await websocket.accept()
+    gateway = AIGatewayService()
+    active_generation_task = None
+
+    while True:
+        msg = await websocket.receive_json()
+        msg_type = msg.get("type")
+
+        if msg_type == "edit":
+            # Safely cancel the active thread if generating
+            if active_generation_task and not active_generation_task.done():
+                cancel_token.set()
+            
+            # Cascade deletion logic to reset conversational context
+            async with AsyncSessionLocal() as db:
+                await gateway.edit_message_cascade(
+                    db, conversation_id, UUID(msg.get("message_id")), msg.get("content")
+                )
+                messages = await gateway.load_message_history(db, conversation_id)
+            
+            await websocket.send_json({"type": "edit_successful"})
+            
+            # Re-trigger LLM evaluation with sanitized historical context
+            active_generation_task = asyncio.create_task(run_ai_stream(messages))
+            </code-block>
+        </div>
+
+        <page-footer page="78"></page-footer>
+    </div>
+</body>
+</html>

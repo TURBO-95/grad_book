@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Chapter 5.5 — Results (Part 2)</title>
+    <style>
+        :root { --primary: #1a365d; --gold: #c6a254; --text-dark: #2d3748; --text-muted: #718096; --surface: #f8fafc; --border: #e2e8f0; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; color: var(--text-dark); font-size: 10.5pt; line-height: 1.6; }
+
+        .page-body { width: 100%; height: 100vh; padding: 42px 52px; display: flex; flex-direction: column; overflow: hidden; page-break-after: always; }
+        .content-wrapper { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
+        
+        .page-sub-header { margin-bottom: 24px; flex-shrink: 0; }
+        .sub-header-title { font-size: 20pt; color: var(--primary); font-weight: 800; margin-bottom: 8px; visibility: hidden; }
+        .sub-header-divider { height: 2px; width: 200px; background: var(--gold); border-radius: 2px; }
+
+        .text-section { margin-bottom: 24px; }
+        .text-section-title { font-size: 13pt; color: var(--primary); font-weight: 700; margin-bottom: 10px; }
+        .text-section-content { text-align: justify; text-indent: 30px; line-height: 1.6; }
+
+        .bullet-item { display: flex; align-items: baseline; margin-bottom: 18px; }
+        .bullet-icon { color: var(--gold); font-size: 10pt; margin-right: 14px; flex-shrink: 0; }
+        .bullet-content { text-align: justify; color: var(--text-dark); line-height: 1.6; }
+        .bullet-title { color: var(--primary); font-weight: 700; margin-right: 6px; }
+
+        .page-footer { margin-top: auto; text-align: center; padding-top: 18px; flex-shrink: 0; }
+        .page-number { font-size: 11pt; font-weight: bold; color: var(--text-muted); }
+    </style>
+</head>
+<body>
+    <div class="page-body pdf-flex-page">
+        <!-- Visual continuity -->
+        <page-sub-header title=""></page-sub-header>
+
+        <div class="content-wrapper">
+            <text-section 
+                title="2. State Resilience and Thread Safety" 
+                content="Given the inherently stateless nature of LLMs, the system's ability to serialize and restore memory correctly was a paramount success metric.">
+            </text-section>
+
+            <bullet-item 
+                title="Zero-Loss Pause and Resume:" 
+                content="During extreme human-in-the-loop gating tests, AI conversations were deliberately suspended for over 24 hours. Upon human validation, the backend reliably deserialized the context and resumed token streaming perfectly, exhibiting zero state drift or memory leaks.">
+            </bullet-item>
+
+            <bullet-item 
+                title="Message Cascade Correctness:" 
+                content="Simulating a user modifying an earlier message in a lengthy 10-turn conversation successfully triggered the cascading database deletion logic. This safely eradicated downstream memory nodes, effectively truncating the LangChain context block and preventing any subsequent AI hallucinations based on the altered timeline.">
+            </bullet-item>
+
+            <text-section 
+                title="3. Security and SSRF Defenses" 
+                content="Allowing an AI engine to dynamically generate and dispatch HTTP requests presents a significant security risk. Penetration scripts were deployed against the Action Engine's URL validation parser. The results were flawless: attempts targeting internal network bindings (e.g., http://localhost:50051/api, or private subnets like 192.168.1.50) were universally intercepted and blocked by the system, raising localized SSRFVulnerabilityError exceptions to protect the host container.">
+            </text-section>
+        </div>
+
+        <page-footer page="83"></page-footer>
+    </div>
+</body>
+</html>

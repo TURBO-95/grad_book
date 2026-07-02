@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Chapter 5.6 — Goals Achieved (Part 2)</title>
+    <style>
+        :root { --primary: #1a365d; --gold: #c6a254; --text-dark: #2d3748; --text-muted: #718096; --surface: #f8fafc; --border: #e2e8f0; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; color: var(--text-dark); font-size: 10.5pt; line-height: 1.6; }
+
+        .page-body { width: 100%; height: 100vh; padding: 42px 52px; display: flex; flex-direction: column; overflow: hidden; page-break-after: always; }
+        .content-wrapper { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
+        
+        .page-sub-header { margin-bottom: 24px; flex-shrink: 0; }
+        .sub-header-title { font-size: 20pt; color: var(--primary); font-weight: 800; margin-bottom: 8px; visibility: hidden; }
+        .sub-header-divider { height: 2px; width: 200px; background: var(--gold); border-radius: 2px; }
+
+        .bullet-item { display: flex; align-items: baseline; margin-bottom: 24px; }
+        .bullet-icon { color: var(--gold); font-size: 10pt; margin-right: 14px; flex-shrink: 0; }
+        .bullet-content { text-align: justify; color: var(--text-dark); line-height: 1.6; }
+        .bullet-title { color: var(--primary); font-weight: 700; margin-right: 6px; }
+
+        .page-footer { margin-top: auto; text-align: center; padding-top: 18px; flex-shrink: 0; }
+        .page-number { font-size: 11pt; font-weight: bold; color: var(--text-muted); }
+    </style>
+</head>
+<body>
+    <div class="page-body pdf-flex-page">
+        <!-- Visual continuity -->
+        <page-sub-header title=""></page-sub-header>
+
+        <div class="content-wrapper">
+            <bullet-item 
+                title="SSRF Vulnerability Defenses:" 
+                content="By engineering a custom hostname lookup validation and IP subnet checking algorithm within the Action Engine, the system completely isolates loopback addresses and private networks. This correctly identifies and intercepts malicious URL payloads, defending the host environment against Server-Side Request Forgery exploitation.">
+            </bullet-item>
+
+            <bullet-item 
+                title="Multi-Provider Model Support:" 
+                content="To achieve maximum flexibility, the architecture unified model instantiation through a 'ModelFactory' and heavily leveraged LangChain adapters. The result is an agnostic platform that supports seamless toggling between OpenAI, Groq, Google Generative AI, Ollama, or local HuggingFace inference nodes simply by altering the environment variables.">
+            </bullet-item>
+
+            <bullet-item 
+                title="State Consistency:" 
+                content="The system implemented context-aware message edit cascades directly within the WebSocket lifecycle. If a user modifies their conversational history, the backend erases subsequent database nodes and resets the AI context correctly. This resulted in resilient session handling that prevents context pollution and eliminates downstream hallucination propagation.">
+            </bullet-item>
+        </div>
+
+        <page-footer page="85"></page-footer>
+    </div>
+</body>
+</html>
